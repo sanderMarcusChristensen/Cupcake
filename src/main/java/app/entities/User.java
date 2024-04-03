@@ -1,48 +1,68 @@
 package app.entities;
 
-public class User
-{
-    private int userId;
-    private String userName;
-    private String password;
-    private String role;
+public class User{
+    private int user_id;
+    private String user_name;
+    private String user_password;
+    private int user_wallet;
+    private String user_role;
 
-    public User(int userId, String userName, String password, String role)
-    {
-        this.userId = userId;
-        this.userName = userName;
-        this.password = password;
-        this.role = role;
+    public User(int user_id, String user_name, String user_password, int user_wallet, String user_role) {
+        this.user_id = user_id;
+        this.user_name = user_name;
+        this.user_password = user_password;
+        this.user_wallet = user_wallet;
+        this.user_role = user_role;
     }
 
-    public int getUserId()
-    {
-        return userId;
+    public int getUser_id() {
+        return user_id;
     }
 
-    public String getUserName()
-    {
-        return userName;
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 
-    public String getPassword()
-    {
-        return password;
+    public String getUser_name() {
+        return user_name;
     }
 
-    public String getRole()
-    {
-        return role;
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
+    }
+
+    public String getUser_password() {
+        return user_password;
+    }
+
+    public void setUser_password(String user_password) {
+        this.user_password = user_password;
+    }
+
+    public int getUser_wallet() {
+        return user_wallet;
+    }
+
+    public void setUser_wallet(int user_wallet) {
+        this.user_wallet = user_wallet;
+    }
+
+    public String getUser_role() {
+        return user_role;
+    }
+
+    public void setUser_role(String user_role) {
+        this.user_role = user_role;
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return "User{" +
-                "userId=" + userId +
-                ", userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
-                ", role='" + role + '\'' +
+                "user_id=" + user_id +
+                ", user_name='" + user_name + '\'' +
+                ", user_password='" + user_password + '\'' +
+                ", user_wallet=" + user_wallet +
+                ", user_role='" + user_role + '\'' +
                 '}';
     }
 }

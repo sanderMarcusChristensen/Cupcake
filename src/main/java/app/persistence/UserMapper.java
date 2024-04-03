@@ -13,7 +13,7 @@ public class UserMapper
 
     public static User login(String userName, String password, ConnectionPool connectionPool) throws DatabaseException
     {
-        String sql = "select * from public.\"users\" where username=? and password=?";
+        String sql = "select * from public.\"users\" where user_name=? and user_password=?";
 
         try (
                 Connection connection = connectionPool.getConnection();
@@ -42,7 +42,7 @@ public class UserMapper
 
     public static void createuser(String userName, String password, ConnectionPool connectionPool) throws DatabaseException
     {
-        String sql = "insert into users (username, password) values (?,?)";
+        String sql = "insert into users (user_name, user_password) values (?,?)";
 
         try (
                 Connection connection = connectionPool.getConnection();

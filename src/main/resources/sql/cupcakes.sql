@@ -5,17 +5,17 @@ BEGIN;
 
 CREATE TABLE IF NOT EXISTS public.bottoms
 (
-    bottom_id integer NOT NULL DEFAULT nextval('"Bottoms_bottom_id_seq"'::regclass),
-    flavor character varying COLLATE pg_catalog."default" NOT NULL,
+    bottom_id serial NOT NULL,
+    flavor character varying(100) COLLATE pg_catalog."default" NOT NULL,
     price integer NOT NULL,
-    CONSTRAINT "Bottoms_pkey" PRIMARY KEY (bottom_id)
+    CONSTRAINT bottoms_pkey PRIMARY KEY (bottom_id)
     );
 
 CREATE TABLE IF NOT EXISTS public."order"
 (
     order_id serial NOT NULL,
     total_price integer NOT NULL,
-    username character varying COLLATE pg_catalog."default" NOT NULL,
+    user_name character varying(50) COLLATE pg_catalog."default" NOT NULL,
     orderline_amount integer NOT NULL,
     CONSTRAINT order_pkey PRIMARY KEY (order_id)
     );
@@ -24,10 +24,9 @@ CREATE TABLE IF NOT EXISTS public.orderline
 (
     orderline_id serial NOT NULL,
     order_id bigserial NOT NULL,
-    topping_id bigserial NOT NULL,
-    bottom_id bigserial NOT NULL,
-    price interval NOT NULL,
-    amount character varying NOT NULL,
+    total_price integer NOT NULL,
+    topping_id integer NOT NULL,
+    bottom_id integer NOT NULL,
     CONSTRAINT orderline_pkey PRIMARY KEY (orderline_id)
     );
 
@@ -35,7 +34,8 @@ CREATE TABLE IF NOT EXISTS public.toppings
 (
     topping_id serial NOT NULL,
     flavor character varying(100) COLLATE pg_catalog."default" NOT NULL,
-    price integer NOT NULL
+    price integer NOT NULL,
+    CONSTRAINT toppings_pkey PRIMARY KEY (topping_id)
     );
 
 CREATE TABLE IF NOT EXISTS public.users
@@ -43,14 +43,25 @@ CREATE TABLE IF NOT EXISTS public.users
     user_id serial NOT NULL,
     user_name character varying(50) COLLATE pg_catalog."default" NOT NULL,
     user_password character varying(50) COLLATE pg_catalog."default" NOT NULL,
-    user_role character varying(20) COLLATE pg_catalog."default" NOT NULL DEFAULT USER,
-    user_wallet integer NOT NULL DEFAULT 0,
-    CONSTRAINT users_pkey PRIMARY KEY (user_password)
+    user_wallet integer,
+    user_role character varying(20) COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT users_pkey PRIMARY KEY (user_id),
+    CONSTRAINT unique_user_name UNIQUE (user_name)
     );
 
-ALTER TABLE IF EXISTS public.bottoms
-    ADD FOREIGN KEY (bottom_id)
-    REFERENCES public.orderline (orderline_id) MATCH SIMPLE
+ALTER TABLE IF EXISTS public.orderline
+    ADD CONSTRAINT fkey_bottoms_orderline FOREIGN KEY (bottom_id)
+    REFERENCES public.bottoms (bottom_id) MATCH SIMPLE
     ON UPDATE NO ACTION
        ON DELETE NO ACTION
     NOT VALID;
+
+
+ALTER TABLE IF EXISTS public.orderline
+    ADD CONSTRAINT fkey_toppings_orderline FOREIGN KEY (topping_id)
+    REFERENCES public.toppings (topping_id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+       ON DELETE NO ACTION
+    NOT VALID;
+
+END;

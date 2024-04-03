@@ -28,7 +28,8 @@ public class UserMapper
             {
                 int id = rs.getInt("user_id");
                 String role = rs.getString("role");
-                return new User(id, userName, password, role);
+                int wallet =rs.getInt("wallet");
+                return new User(id, userName, password, wallet, role);
             } else
             {
                 throw new DatabaseException("Fejl i login. Prøv igen");

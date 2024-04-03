@@ -7,16 +7,24 @@
 </head>
 <body>
 
+    <header>
+
+    </header>
+
+    <h1>Log ind for at bestille dine cup cakes</h1>
 
 
-<form class="generic-form" method="post">
-    <input type="text" name="username" placeholder="Enter your username"/>
-    <input type="password" name="password" placeholder="Enter your password"/>
+    <form class="generic-form" method="post">
+        <input type="text" name="username" placeholder="Enter your username"/>
+        <input type="password" name="password" placeholder="Enter your password"/>
+        <div><p class="error" th:unless="${#strings.isEmpty(message)}" th:text="${message}"></p></div>
 
-    <button type="submit" formaction="/login">Login</button>
-    <button type="submit" formaction="/createAcc">Sign up</button>
-    <div><p class="error" th:unless="${#strings.isEmpty(message)}" th:text="${message}"></p></div>
-</form>
+        <button class="btn logIn" type="submit" formaction="/login">Log in</button>
+        <div class="signUp_LogOut">
+            <button class="btn signUp" type="submit" formaction="/createAcc">Create account</button>
+            <button class="btn logOut" type="submit" formaction="/createAcc">Log Out</button>
+        </div>
+    </form>
 
 
 

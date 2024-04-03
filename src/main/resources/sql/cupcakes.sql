@@ -84,5 +84,12 @@ VALUES ('Chocolate', 5.00),
        ('Lemon', 8.00),
        ('Blue cheese', 9.00);
 
+-- Inserting data into users table
+INSERT INTO users (user_name, user_password, user_wallet, user_role)
+VALUES
+    ('user1', '1234', 100.00, 'regular'),
+    ('user2', '1234', 200.00, 'regular'),
+    ('admin', 'admin', 500.00, 'admin');
+
 
 END;

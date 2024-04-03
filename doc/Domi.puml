@@ -1,19 +1,19 @@
 @startuml
 
-
+object Admin
 object User
 object Bottom
 object Top
 object Orderline
 object Order
-object Cupcake
 
 
+User --o Admin
+Admin --o Order
 User --o Order
 Order --* Orderline
-Orderline --* Cupcake
-Cupcake --* Top
-Cupcake --* Bottom
+Orderline --* Top
+Orderline --* Bottom
 
 
 

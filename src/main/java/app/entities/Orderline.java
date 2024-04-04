@@ -4,10 +4,10 @@ public class Orderline {
     private int orderline_id;
     private int order_id;
     private int total_price;
-    private Toppings toppings_id;
-    private Bottoms bottoms_id;
+    private int toppings_id;
+    private int bottoms_id;
 
-    public Orderline(int orderline_id, int order_id, int total_price, Toppings toppings_id, Bottoms bottoms_id) {
+    public Orderline(int orderline_id, int order_id, int total_price, int toppings_id, int bottoms_id) {
         this.orderline_id = orderline_id;
         this.order_id = order_id;
         this.total_price = total_price;
@@ -39,19 +39,19 @@ public class Orderline {
         this.total_price = total_price;
     }
 
-    public Toppings getToppings_id() {
+    public int getToppings_id() {
         return toppings_id;
     }
 
-    public void setToppings_id(Toppings toppings_id) {
+    public void setToppings_id(int toppings_id) {
         this.toppings_id = toppings_id;
     }
 
-    public Bottoms getBottoms_id() {
+    public int getBottoms_id() {
         return bottoms_id;
     }
 
-    public void setBottoms_id(Bottoms bottoms_id) {
+    public void setBottoms_id(int bottoms_id) {
         this.bottoms_id = bottoms_id;
     }
 

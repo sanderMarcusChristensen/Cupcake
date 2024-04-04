@@ -1,0 +1,48 @@
+main{
+    min-width: 500px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+table{
+    margin-top: 2rem;
+}
+
+table, th, td {
+    border-collapse: collapse;
+    border: 2px solid #F0EFF0;
+    padding: 1rem;
+    text-align: center;
+}
+
+
+.btn[type="submit"]:hover {
+    background-color: #AC58E4;
+}
+
+.btn[type="submit"] {
+    background-color:#421064;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+
+.btn-delete[type="submit"]:hover {
+    background-color: #FF6359;
+}
+
+
+.btn-delete[type="submit"]{
+    background-color: #F5190B;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}

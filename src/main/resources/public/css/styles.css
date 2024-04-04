@@ -26,3 +26,25 @@ header {
     display: flex;
     align-items: center;
 }
+
+.btn[type="submit"]:hover {
+    background-color: #AC58E4;
+}
+
+.btn[type="submit"] {
+    background-color:#421064;
+    color: white;
+    padding: 10px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.error {
+    border: 1px solid red;
+    padding: 10px;
+    color: red;
+    max-width: 400px;
+}

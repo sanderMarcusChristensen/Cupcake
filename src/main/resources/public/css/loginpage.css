@@ -1,0 +1,68 @@
+h1{
+    margin: 1.5rem 0 1.5rem 0;
+    text-align: center;
+    font-weight: normal;
+}
+
+
+/* Styling the login form container */
+.generic-form {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    /*background-color: #F0EFF0;*/
+    border-radius: 5px;
+}
+
+/* Styling the form elements */
+.generic-form input[type="text"], .generic-form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+/* Styling the submit button on hover */
+.generic-form button[type="submit"]:hover {
+    background-color: #AC58E4;
+}
+
+/* Styling error message */
+.generic-form .error {
+    color: red;
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+.signUp_LogOut {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.generic-form button[type="submit"] {
+    background-color:#421064;
+    color: white;
+    padding: 10px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+
+.signUp{
+    width: 60%;
+}
+.logOut{
+    width: 35%;
+}
+
+.logIn{
+    width: 100%;
+}
+

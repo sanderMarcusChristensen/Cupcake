@@ -21,11 +21,10 @@
         <input type="password" name="password" placeholder="Enter your password"/>
         <div><p class="error" th:unless="${#strings.isEmpty(message)}" th:text="${message}"></p></div>
 
-        <button class="btn logIn" type="submit" formaction="/login">Log in</button>
+        <button class="btn logIn"type="submit" formaction="/login">Login</button>
         <div class="signUp_LogOut">
             <button class="btn signUp" type="submit" formaction="/createAcc">Create account</button>
-            <button class="btn logOut" type="submit" formaction="/createAcc">Log Out</button>
-        </div>
+        <button class="btn logOut" type="submit" formaction="/createAcc">Log Out</button></div>
     </form>
 
 

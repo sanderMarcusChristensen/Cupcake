@@ -3,21 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <title>Orderpage</title>
-    <link href="../public/css/orderpagestyles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
+    <link href="../public/css/styles.css"  th:href="@{/css/styles.css}" rel="stylesheet">
+    <link href="../public/css/orderpagestyles.css" th:href="@{/css/orderpagestyles.css}" rel="stylesheet"/>
 </head>
+
+<body>
 
     <header class="page">
         <a href="../index.html" th:href="@{/}">
+            <img alt="logo" src="../public/images/CupcakeLogo.png" th:src="@{/images/CupcakeLogo.png}"/>
             <img alt="logo" src="../public/images/headerimage.png" th:src="@{/images/lifehacklogo.png}"/>
         </a>
     </header>
 
+    <div class="upper-container">
+        <div class="left-side-content">
+            <a  class="orders-href" href="orders.html">Ordrer</a>
+            <a class="customers-href" href="customers.html">Kunder</a>
+        </div>
+        <div class="right-side-content">
+            <p class="email">e-mail here</p>
+            <img class="basket-image" alt="basket" src="../public/images/basket.png">
+        </div>
+    </div>
 
-<body>
+    <div class="main-container">
 
-<h1>Velkommen ombord</h1>
-<h2>Øens bedste cupcakes! Vælg og bestil her:</h2>
+        <div class="main-container-text">
+            <h1>Velkommen ombord</h1>
 
+            <p class="sub-text">Øens bedste cupcakes! Vælg og bestil her:</p>
+        </div>
+
+        <div class="cupcake-form-bottom">
+            <form method="post" class="generic-form">
+                <label for="bottom"></label>
+                <select name="bottom" id="bottom" required>
+                    <option value="" disabled selected>Vælg bund</option>
+                    <option value="volvo">Volvo</option>
+                    <option value="saab">Saab</option>
+                    <option value="opel">Opel</option>
+                    <option value="audi">Audi</option>
+                </select>
+
+                <label for="topping"></label>
+                <select name="topping" id="topping" required>
+                    <option value="" disabled selected>Vælg topping</option>
+                    <option value="volvo">Volvo</option>
+                    <option value="saab">Saab</option>
+                    <option value="opel">Opel</option>
+                    <option value="audi">Audi</option>
+                </select>
+
+                <label for="amount"></label>
+                <select name="amount" id="amount" required>
+                    <option value="" disabled selected>Vælg antal</option>
+                    <option value="volvo">Volvo</option>
+                    <option value="saab">Saab</option>
+                    <option value="opel">Opel</option>
+                    <option value="audi">Audi</option>
+                </select>
+
+                <button type="submit" formaction="/addtobasket">Læg i kurv</button>
+            </form>
+        </div>
+    </div>
 
 
 </body>

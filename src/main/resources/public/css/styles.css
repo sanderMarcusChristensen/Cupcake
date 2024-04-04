@@ -16,11 +16,13 @@ header {
     justify-content: space-between;
     background-color: #F0EFF0;
     color: #9E9E9E;
-    padding: 1rem 1.2rem 1rem 1.2rem;
+    padding: 0.5rem 1.5rem 0.5rem 1.5rem;
     margin: 8px 0 8px;
 }
 .top a{
     color: #9E9E9E;
     text-decoration: none;
     text-align: center;
+    display: flex;
+    align-items: center;
 }

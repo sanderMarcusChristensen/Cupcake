@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User view</title>
+    <link href="../public/css/userviewpage.css" th:href="@{/css/userviewpage.css}" rel="stylesheet">
+    <link href="../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
+</head>
+<body>
+
+  <header class="page">
+    <a href="../index.html" th:href="@{/}">
+      <img alt="logo" src="../public/images/CupcakeLogo.png" th:src="@{/images/CupcakeLogo.png}"/>
+      <img alt="logo" src="../public/images/headerimage.png" th:src="@{/images/lifehacklogo.png}"/>
+    </a>
+  </header>
+
+  <div class="top">
+    <a href="../index.html">Homepage</a>
+    <p>( user )</p>
+  </div>
+
+  <main>
+    <table>
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Balance</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="task: ${userList}">
+          <td th:text="${users.name}">Chad</td>
+          <td class="balance-holder" th:text="${users.balance}">69</td>
+          <td>
+            <button class="btn" type="submit">Edit balance</button>
+            <button class="btn-delete" type="submit">Delete</button>
+          </td>
+        </tr>
+
+        <tr th:each="task: ${userList}">
+          <td th:text="${users.name}">Gary</td>
+          <td class="balance-holder" th:text="${users.balance}">420</td>
+          <td>
+            <button class="btn" type="submit">Edit balance</button>
+            <button class="btn-delete" type="submit">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </main>
+
+</body>
+</html>

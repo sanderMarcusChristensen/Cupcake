@@ -3,6 +3,13 @@
 
 }
 
+header {
+    display: flex;
+    justify-content: center;
+    border: 0px;
+    background-color: #421064;
+}
+
 .top {
     display: flex;
     flex-direction: row;

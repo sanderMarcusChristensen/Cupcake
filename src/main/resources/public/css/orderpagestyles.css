@@ -1,31 +1,84 @@
-*{
+* {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-header{
-    margin: 0;
+/*-------------- HEADER -------------*/
+
+header {
+    display: flex;
+    justify-content: center;
+    border: 0px;
+    background-color: #421064;
+}
+
+/*------------- UPPER BODY -----------*/
+
+.upper-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #F5F5F5;
+    margin: 15px 0px 15px 0px;
+}
+
+.left-side-content {
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+    font-size: 15px;
+
+    .orders-href {
+        padding-right: 20px;
+    }
+}
+
+.right-side-content {
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+    font-size: 15px;
+
+    .email{
+        padding-right: 20px;
+    }
+
+    .basket-image {
+        width: 3vw;
+        background-color: #421064;
+        border-radius: 8px;
+    }
 }
 
 
+/*------------- MAIN BODY -------------*/
+
+.main-container {
+    background-color: #F5F5F5;
+    padding: 10px;
+    margin: 15px 0px 15px 0px;
+}
+
+.main-container-text {
+    padding-left: 40px;
+
+    h1 {
+        font-size: 50px;
+        font-weight: normal;
+    }
+
+    .sub-text {
+        font-size: 30px;
+        font-weight: normal;
+    }
+}
+
+.cupcake-form{
+    display: flex;
+    justify-content: space-between;
+}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*---------------- GENERAL STYLES ------------------*/
 
 .generic-form {
     width: 300px;
@@ -35,21 +88,10 @@ header{
     border-radius: 5px;
 }
 
-/* Styling the form elements */
-.generic-form input[type="text"],
-.generic-form input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin: 5px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
 /* Styling the submit button */
 .generic-form button[type="submit"] {
-    width: 100%;
-    background-color:#421064;
+    width: 50%;
+    background-color: #421064;
     color: white;
     padding: 10px 20px;
     margin: 8px 0;
@@ -61,7 +103,7 @@ header{
 
 /* Styling the submit button on hover */
 .generic-form button[type="submit"]:hover {
-    background-color: #45a049;
+    background-color: #9966ff;
 }
 
 /* Styling error message */

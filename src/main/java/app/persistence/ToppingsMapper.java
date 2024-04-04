@@ -1,6 +1,5 @@
 package app.persistence;
 
-import app.entities.Bottoms;
 import app.entities.Toppings;
 import app.exceptions.DatabaseException;
 
@@ -15,31 +14,45 @@ public class ToppingsMapper {
 
     private static ArrayList<Toppings> toppingsList = new ArrayList<>();
 
-    public static List<Toppings> loadToppings(ConnectionPool connectionPool ) throws DatabaseException
-    {
+    public static List<Toppings> getAllToppings(ConnectionPool connectionPool) throws DatabaseException {
 
         String sql = "select * from public.toppings";
 
         try (
-                Connection connection = connectionPool.getConnection();
+                Connection connection = connectionPool.getConnection(); // skal try-catch se sådan ud ?
                 PreparedStatement ps = connection.prepareStatement(sql)
-        )
-        {
-            //ps.setInt(1, quote_id);
+        ) {
+
             ResultSet rs = ps.executeQuery();
-            while (rs.next())
-            {
+            while (rs.next()) {
                 int topping_id = rs.getInt("topping_id");
                 String flavor = rs.getString("flavor");
                 int price = rs.getInt("price");
-                toppingsList.add(new Toppings(topping_id,flavor,price));
+                toppingsList.add(new Toppings(topping_id, flavor, price));
             }
-        }
-        catch (SQLException e)
-        {
+        } catch (SQLException e) {
             throw new DatabaseException("Fejl!!!!", e.getMessage());
         }
         return toppingsList;
     }
-}
 
+    static Toppings getAllToppingsById(int top_id, ConnectionPool connectionPool) throws DatabaseException {
+        String sql = "select * from toppings where topping_id = ?";
+        Toppings cupcakeTop = null;
+        try (Connection connection = connectionPool.getConnection()) {      //eller skal den se sådan ud?
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, top_id);
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    int topping_id = rs.getInt("topping_id");
+                    String flavor = rs.getString("flavor");
+                    int price = rs.getInt("price");
+                    cupcakeTop = new Toppings(topping_id, flavor, price);
+                }
+            }
+        } catch (SQLException e) {
+            throw new DatabaseException("Fejl i tilgangen til databasen", e.getMessage());
+        }
+        return cupcakeTop;
+    }
+}

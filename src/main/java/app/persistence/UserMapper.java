@@ -27,8 +27,8 @@ public class UserMapper
             if (rs.next())
             {
                 int id = rs.getInt("user_id");
-                String role = rs.getString("role");
-                int wallet =rs.getInt("wallet");
+                String role = rs.getString("user_role");
+                int wallet =rs.getInt("user_wallet");
                 return new User(id, userName, password, wallet, role);
             } else
             {

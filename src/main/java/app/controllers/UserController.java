@@ -1,11 +1,17 @@
 package app.controllers;
 
+import app.entities.Bottoms;
+import app.entities.Toppings;
 import app.entities.User;
 import app.exceptions.DatabaseException;
+import app.persistence.BottomsMapper;
 import app.persistence.ConnectionPool;
+import app.persistence.ToppingsMapper;
 import app.persistence.UserMapper;
 import io.javalin.Javalin;
 import io.javalin.http.Context;
+
+import java.util.List;
 
 public class UserController
 {
@@ -15,6 +21,11 @@ public class UserController
         app.get("logout", ctx -> logout(ctx));
         app.get("createuser", ctx -> ctx.render("createuser.html"));
         app.post("createuser", ctx -> createUser(ctx, connectionPool));
+        app.post("addtobasket", ctx -> addToBasket(ctx));
+    }
+
+    private static void addToBasket(Context ctx) {
+
     }
 
     private static void createUser(Context ctx, ConnectionPool connectionPool)
@@ -66,6 +77,10 @@ public class UserController
             User user = UserMapper.login(username, password, connectionPool);
             ctx.sessionAttribute("currentUser", user);
             // Hvis ja, send videre til forsiden med login besked
+            List<Bottoms> bottomsList = BottomsMapper.getAllBottoms(connectionPool);
+            List<Toppings> toppingsList = ToppingsMapper.getAllToppings(connectionPool);
+            ctx.attribute("bottomsList", bottomsList);
+            ctx.attribute("toppingsList", toppingsList);
             ctx.render("orderpage.html");
         }
         catch (DatabaseException e)

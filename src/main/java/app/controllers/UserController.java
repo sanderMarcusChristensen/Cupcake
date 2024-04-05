@@ -66,7 +66,6 @@ public class UserController
             User user = UserMapper.login(username, password, connectionPool);
             ctx.sessionAttribute("currentUser", user);
             // Hvis ja, send videre til forsiden med login besked
-            ctx.attribute("message", "Du er nu logget ind");
             ctx.render("orderpage.html");
         }
         catch (DatabaseException e)

@@ -3,14 +3,25 @@
 
 }
 
-header {
+/* ----- header ----- */
+
+.global-header {
     display: flex;
-    justify-content: center;
-    border: 0px;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 1rem 2.5rem 1rem 2.5rem;
+    border: 0;
     background-color: #421064;
 }
 
-.top {
+.cupcakelogo{
+    height: 250px;
+    width: auto;
+}
+
+/* ----- top section ----- */
+
+.top-section {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -19,13 +30,27 @@ header {
     padding: 0.5rem 1.5rem 0.5rem 1.5rem;
     margin: 8px 0 8px;
 }
-.top a{
-    color: #9E9E9E;
-    text-decoration: none;
-    text-align: center;
+.top-section div{
     display: flex;
+    flex-direction: row;
     align-items: center;
 }
+.top-section a, .top-section p {
+    display: flex;
+    align-items: center;
+
+    color: #9E9E9E;
+    text-align: center;
+    text-decoration: none;
+    margin-right: 2rem;
+}
+
+.top-section div a:hover, .top-section div img:hover{
+    color: #CFCFCF;
+}
+
+
+/* ----- buttons ----- */
 
 .btn[type="submit"]:hover {
     background-color: #AC58E4;

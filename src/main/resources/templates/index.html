@@ -8,11 +8,11 @@
 </head>
 <body>
 
-    <header class="page">
+    <header class="global-header">
         <a href="../index.html" th:href="@{/}">
             <img alt="logo" src="../public/images/CupcakeLogo.png" th:src="@{/images/CupcakeLogo.png}"/>
-            <img alt="logo" src="../public/images/headerimage.png" th:src="@{/images/lifehacklogo.png}"/>
         </a>
+        <img class="cupcakelogo" alt="logo" src="../public/images/headerimage.png" th:src="@{/images/headerimage.png}"/>
     </header>
 
     <h1>Log ind for at bestille dine cup cakes</h1>
@@ -23,14 +23,11 @@
         <input type="password" name="password" placeholder="Enter your password"/>
         <div><p class="error" th:unless="${#strings.isEmpty(message)}" th:text="${message}"></p></div>
 
-        <button class="btn logIn"type="submit" formaction="/login">Login</button>
+        <button class="btn logIn" type="submit" formaction="/login">Login</button>
         <div class="signUp_LogOut">
             <button class="btn signUp" type="submit" formaction="/createAcc">Create account</button>
         <button class="btn logOut" type="submit" formaction="/createAcc">Log Out</button></div>
     </form>
-
-
-
 
 </body>
 </html>

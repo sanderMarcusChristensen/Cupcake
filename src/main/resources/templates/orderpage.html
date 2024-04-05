@@ -8,84 +8,91 @@
 </head>
 
 <body>
+    <header class="global-header">
+        <a href="../index.html" th:href="@{/}">
+            <img alt="logo" src="../public/images/CupcakeLogo.png" th:src="@{/images/CupcakeLogo.png}"/>
+        </a>
+        <img class="cupcakelogo" alt="logo" src="../public/images/headerimage.png" th:src="@{/images/headerimage.png}"/>
+    </header>
 
-<header class="page">
-    <a href="../index.html" th:href="@{/}">
-        <img alt="logo" src="../public/images/CupcakeLogo.png" th:src="@{/images/CupcakeLogo.png}"/>
-        <img alt="logo" src="../public/images/headerimage.png" th:src="@{/images/lifehacklogo.png}"/>
-    </a>
-</header>
-
-<div th:if="${session.currentUser.user_role == 'admin'}" class="upper-container">
-    <div class="left-side-content">
-        <a class="orders-href" href="orders.html">Ordrer</a>
-        <a class="customers-href" href="customers.html">Kunder</a>
-    </div>
-    <div class="right-side-content">
-        <p class="email">e-mail here</p>
-        <img class="" alt="basket" src="../public/images/basket.svg">
-    </div>
-</div>
-
-
-<div class="main-container">
-
-    <div class="main-container-text">
-        <h1>Velkommen ombord</h1>
-
-        <p class="sub-text">Øens bedste cupcakes! Vælg og bestil her:</p>
-    </div>
-
-
-    <form method="post">
-        <div class="form-container">
-            <div class="dropdown-menu">
-                <label for="flavor"></label>
-                <select name="flavor" id="flavor" required>
-                    <option value="" disabled selected>Choose flavor</option>
-                    <option value="chocolate">Chocolate</option>
-                    <option value="vanilla">Vanilla</option>
-                    <option value="nutmeg">Nutmeg</option>
-                    <option value="pistachio">Pistachio</option>
-                    <option value="almond">Almond</option>
-                </select>
-            </div>
-
-            <div class="dropdown-menu">
-                <label for="topping"></label>
-                <select name="topping" id="topping" required>
-                    <option value="" disabled selected>Choose topping</option>
-                    <option value="chocolate">Chocolate</option>
-                    <option value="blueberry">Blueberry</option>
-                    <option value="raspberry">Raspberry</option>
-                    <option value="crispy">Crispy</option>
-                    <option value="strawberry">Strawberry</option>
-                    <option value="rum-raisin">Rum/Raisin</option>
-                    <option value="orange">Orange</option>
-                    <option value="lemon">Lemon</option>
-                    <option value="blue-cheese">Blue cheese</option>
-                </select>
-            </div>
-
-            <div class="dropdown-menu">
-                <label for="amount"></label>
-                <select name="amount" id="amount" required>
-                    <option value="" disabled selected>Vælg antal</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                </select>
-            </div>
-
+    <div class="top-section"  th:if="${session.currentUser.user_role == 'admin'}">
+        <div class="left-side-content">
+            <a class="orders-href" href="orders.html">Ordrer</a>
+            <a class="customers-href" href="customers.html">Kunder</a>
         </div>
-        <button class="btn" type="submit" formaction="addtobasket">Læg i kurv FIKS MIN POSITION</button>
+        <div class="right-side-content">
+            <p class="email">e-mail here</p>
+            <img class="" alt="basket" src="../public/images/basket.svg" th:src="@{/images/basket.svg}">
+        </div>
+    </div>
 
-    </form>
+    <div class="top-section"  th:if="${session.currentUser.user_role == 'user'}">
+        <div class="left-side-content">
+            <p class="email" th:if="${session.currentUser.user_name}">username</p>
+        </div>
+        <div class="right-side-content">
+            <img class="" alt="basket" src="../public/images/basket.svg" th:src="@{/images/basket.svg}">
+        </div>
+    </div>
 
-</div>
 
-<div><p class="error" th:unless="${#strings.isEmpty(message)}" th:text="${message}"></p></div>
+    <div class="main-container">
+
+        <div class="main-container-text">
+            <h1>Velkommen ombord</h1>
+            <p class="sub-text">Øens bedste cupcakes! Vælg og bestil her:</p>
+        </div>
+
+
+        <form method="post">
+            <div class="form-container">
+                <div class="dropdown-menu">
+                    <label for="flavor"></label>
+                    <select name="flavor" id="flavor" required>
+                        <option value="" disabled selected>Choose flavor</option>
+                        <option value="chocolate">Chocolate</option>
+                        <option value="vanilla">Vanilla</option>
+                        <option value="nutmeg">Nutmeg</option>
+                        <option value="pistachio">Pistachio</option>
+                        <option value="almond">Almond</option>
+                    </select>
+                </div>
+
+                <div class="dropdown-menu">
+                    <label for="topping"></label>
+                    <select name="topping" id="topping" required>
+                        <option value="" disabled selected>Choose topping</option>
+                        <option value="chocolate">Chocolate</option>
+                        <option value="blueberry">Blueberry</option>
+                        <option value="raspberry">Raspberry</option>
+                        <option value="crispy">Crispy</option>
+                        <option value="strawberry">Strawberry</option>
+                        <option value="rum-raisin">Rum/Raisin</option>
+                        <option value="orange">Orange</option>
+                        <option value="lemon">Lemon</option>
+                        <option value="blue-cheese">Blue cheese</option>
+                    </select>
+                </div>
+
+                <div class="dropdown-menu">
+                    <label for="amount"></label>
+                    <select name="amount" id="amount" required>
+                        <option value="" disabled selected>Vælg antal</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+
+            </div>
+            <button class="btn" type="submit" formaction="addtobasket">Læg i kurv FIKS MIN POSITION</button>
+
+        </form>
+
+    </div>
+
+    <div><p class="error" th:unless="${#strings.isEmpty(message)}" th:text="${message}"></p></div>
 
 
 </body>

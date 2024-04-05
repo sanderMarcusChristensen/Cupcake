@@ -17,17 +17,19 @@
 
     <h1>Log ind for at bestille dine cup cakes</h1>
 
+    <div class="generic-form">
+        <form method="post">
+            <input type="text" name="username" placeholder="Enter your username"/>
+            <input type="password" name="password" placeholder="Enter your password"/>
+            <div><p class="error" th:unless="${#strings.isEmpty(message)}" th:text="${message}"></p></div>
 
-    <form class="generic-form" method="post">
-        <input type="text" name="username" placeholder="Enter your username"/>
-        <input type="password" name="password" placeholder="Enter your password"/>
-        <div><p class="error" th:unless="${#strings.isEmpty(message)}" th:text="${message}"></p></div>
-
-        <button class="btn logIn" type="submit" formaction="/login">Login</button>
+            <button class="btn logIn" type="submit" formaction="/login">Login</button>
+        </form>
         <div class="signUp_LogOut">
-            <button class="btn signUp" type="submit" formaction="/createAcc">Create account</button>
-        <button class="btn logOut" type="submit" formaction="/createAcc">Log Out</button></div>
-    </form>
+            <a href="createuser.html" th:href="@{createuser}" target="_parent"><button>Create account</button></a>
+            <button class="btn logOut" type="submit" formaction="/logout">Log Out</button>
+        </div>
+    </div>
 
-</body>
-</html>
+    </body>
+    </html>

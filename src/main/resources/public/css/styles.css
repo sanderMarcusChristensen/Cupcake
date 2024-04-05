@@ -52,11 +52,11 @@
 
 /* ----- buttons ----- */
 
-.btn[type="submit"]:hover {
+.btn[type="submit"], .btn {
     background-color: #AC58E4;
 }
 
-.btn[type="submit"] {
+.btn[type="submit"], .btn {
     background-color:#421064;
     color: white;
     padding: 10px 20px;

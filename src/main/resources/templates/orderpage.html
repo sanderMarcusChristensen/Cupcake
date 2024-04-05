@@ -49,12 +49,8 @@
                 <div class="dropdown-menu">
                     <label for="flavor"></label>
                     <select name="flavor" id="flavor" required>
-                        <option value="" disabled selected>Choose flavor</option>
-                        <option value="chocolate">Chocolate</option>
-                        <option value="vanilla">Vanilla</option>
-                        <option value="nutmeg">Nutmeg</option>
-                        <option value="pistachio">Pistachio</option>
-                        <option value="almond">Almond</option>
+                        <option value="" disabled selected>Choose topping</option>
+                        <option th:each="i : ${bottomsList}" th:value="${i}" th:text="${i.flavor}">
                     </select>
                 </div>
 
@@ -62,15 +58,7 @@
                     <label for="topping"></label>
                     <select name="topping" id="topping" required>
                         <option value="" disabled selected>Choose topping</option>
-                        <option value="chocolate">Chocolate</option>
-                        <option value="blueberry">Blueberry</option>
-                        <option value="raspberry">Raspberry</option>
-                        <option value="crispy">Crispy</option>
-                        <option value="strawberry">Strawberry</option>
-                        <option value="rum-raisin">Rum/Raisin</option>
-                        <option value="orange">Orange</option>
-                        <option value="lemon">Lemon</option>
-                        <option value="blue-cheese">Blue cheese</option>
+                        <option th:each="i : ${toppingsList}" th:value="${i}" th:text="${i.flavor}">
                     </select>
                 </div>
 

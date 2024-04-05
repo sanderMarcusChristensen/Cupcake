@@ -7,7 +7,6 @@
     <link href="../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
 </head>
 <body>
-
     <header class="global-header">
         <a href="../index.html" th:href="@{/}">
             <img alt="logo" src="../public/images/CupcakeLogo.png" th:src="@{/images/CupcakeLogo.png}"/>
@@ -26,7 +25,7 @@
             <button class="btn logIn" type="submit" formaction="/login">Login</button>
         </form>
         <div class="signUp_LogOut">
-            <a href="createuser.html" th:href="@{createuser}" target="_parent"><button>Create account</button></a>
+            <a class="btn signUp" href="createuser.html" th:href="@{createuser}" target="_parent">Create account</a>
             <button class="btn logOut" type="submit" formaction="/logout">Log Out</button>
         </div>
     </div>

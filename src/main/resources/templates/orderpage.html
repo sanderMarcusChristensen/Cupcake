@@ -26,7 +26,7 @@
         </div>
     </div>
 
-    <div class="top-section"  th:if="${session.currentUser.user_role == 'user'}">
+    <div class="top-section"  th:if="${session.currentUser.user_role == 'user' || session.currentUser.user_role == 'null'}">
         <div class="left-side-content">
             <p class="email" th:if="${session.currentUser.user_name}">username</p>
         </div>
@@ -46,20 +46,22 @@
 
         <form method="post">
             <div class="form-container">
-                <div class="dropdown-menu">
-                    <label for="flavor"></label>
-                    <select name="flavor" id="flavor" required>
-                        <option value="" disabled selected>Choose topping</option>
-                        <option th:each="i : ${bottomsList}" th:value="${i}" th:text="${i.flavor}">
-                    </select>
-                </div>
+                <div class="left-side">
+                    <div class="dropdown-menu">
+                        <label for="flavor"></label>
+                        <select name="flavor" id="flavor" required>
+                            <option value="" disabled selected>Choose topping</option>
+                            <option th:each="i : ${bottomsList}" th:value="${i}" th:text="${i.flavor}">
+                        </select>
+                    </div>
 
-                <div class="dropdown-menu">
-                    <label for="topping"></label>
-                    <select name="topping" id="topping" required>
-                        <option value="" disabled selected>Choose topping</option>
-                        <option th:each="i : ${toppingsList}" th:value="${i}" th:text="${i.flavor}">
-                    </select>
+                    <div class="dropdown-menu">
+                        <label for="topping"></label>
+                        <select name="topping" id="topping" required>
+                            <option value="" disabled selected>Choose topping</option>
+                            <option th:each="i : ${toppingsList}" th:value="${i}" th:text="${i.flavor}">
+                        </select>
+                    </div>
                 </div>
 
                 <div class="dropdown-menu">
@@ -70,17 +72,20 @@
                         <option value="2">2</option>
                         <option value="3">3</option>
                         <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
                     </select>
                 </div>
-
             </div>
-            <button class="btn" type="submit" formaction="addtobasket">Læg i kurv FIKS MIN POSITION</button>
+            <button class="submit-btn" type="submit" formaction="addtobasket">Læg i kurv</button>
 
         </form>
 
+        <div><p class="error" th:unless="${#strings.isEmpty(message)}" th:text="${message}"></p></div>
     </div>
 
-    <div><p class="error" th:unless="${#strings.isEmpty(message)}" th:text="${message}"></p></div>
 
 
 </body>

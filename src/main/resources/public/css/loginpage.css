@@ -26,7 +26,7 @@ h1{
 
 
 /* Styling the submit button on hover */
-.generic-form button[type="submit"]:hover, .generic-form button:hover {
+.generic-form button[type="submit"]:hover, .generic-form button:hover, .signUp:hover {
     background-color: #AC58E4;
 }
 
@@ -43,20 +43,10 @@ h1{
     justify-content: space-between;
 }
 
-.generic-form button {
-    background-color:#421064;
-    color: white;
-    padding: 10px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-
 .signUp{
     width: 60%;
+    text-decoration: none;
+    text-align: center;
 }
 .logOut{
     width: 35%;

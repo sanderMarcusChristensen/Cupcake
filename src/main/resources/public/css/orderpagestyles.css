@@ -64,18 +64,19 @@ header img {
 */
 
 /*------------- MAIN BODY -------------*/
-
+body{
+    height: 100%;
+}
 .main-container {
     display: flex;
     flex-direction: column;
     background-color: #F5F5F5;
-    padding: 10px;
+    height: auto;
+    padding: 1.5rem 2rem 1.5rem 2rem;
     margin: 8px 0 8px 0;
 }
 
 .main-container-text {
-    padding-left: 40px;
-
     h1 {
         font-size: 50px;
         font-weight: normal;
@@ -86,22 +87,29 @@ header img {
         font-weight: normal;
     }
 }
+form{
+    display: flex;
+    flex-direction: column;
+}
 
 .form-container{
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
-    padding: 20px;
+    justify-content: space-between;
+    margin: 2rem 0 2rem 0;
+}
+
+.left-side{
+    display: flex;
+
 }
 
 .dropdown-menu select{
-    margin: 0 auto;
+    width: 250px;
+    margin: 0 2rem 0 0;
     border: none;
-    padding: 10px 50px 10px 10px;
+    padding: 1rem 7rem 1rem 1rem;
     border-radius: 4px;
-}
-
-select {
     appearance: none;
     background-image: url("../images/dropdownarrow.svg");
     background-repeat: no-repeat;
@@ -109,10 +117,25 @@ select {
     background-size: 0.65rem auto;
 }
 
-.btn{
+
+.submit-btn[type="submit"] {
     display: flex;
     align-self: end;
+    background-color: #3E8CCD;
+    color: white;
+    padding: 10px 20px;
+    margin: 8px 2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 36px;
 }
+
+.submit-btn:hover{
+    background-color: #421064;
+}
+
 
 /*---------------- GENERAL STYLES ------------------*/
 

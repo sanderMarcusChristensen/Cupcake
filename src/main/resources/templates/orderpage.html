@@ -1,13 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Orderpage</title>
-    <link href="../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet">
-    <link href="../public/css/orderpagestyles.css" th:href="@{/css/orderpagestyles.css}" rel="stylesheet"/>
-</head>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Orderpage</title>
+        <link href="../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet">
+        <link href="../public/css/orderpagestyles.css" th:href="@{/css/orderpagestyles.css}" rel="stylesheet"/>
+    </head>
 
-<body>
+    <body>
     <header class="global-header">
         <a href="../index.html" th:href="@{/}">
             <img alt="logo" src="../public/images/CupcakeLogo.png" th:src="@{/images/CupcakeLogo.png}"/>
@@ -15,7 +15,7 @@
         <img class="cupcakelogo" alt="logo" src="../public/images/headerimage.png" th:src="@{/images/headerimage.png}"/>
     </header>
 
-    <div class="top-section"  th:if="${session.currentUser.user_role == 'admin'}">
+    <div class="top-section" th:if="${session.currentUser.user_role == 'admin'}">
         <div class="left-side-content">
             <a class="orders-href" href="orders.html">Ordrer</a>
             <a class="customers-href" href="customers.html">Kunder</a>
@@ -26,7 +26,7 @@
         </div>
     </div>
 
-    <div class="top-section"  th:if="${session.currentUser.user_role == 'user' || session.currentUser.user_role == 'null'}">
+    <div class="top-section" th:if="${session.currentUser.user_role == 'user' || session.currentUser.user_role == 'null'}">
         <div class="left-side-content">
             <p class="email" th:if="${session.currentUser.user_name}">username</p>
         </div>
@@ -44,23 +44,27 @@
         </div>
 
 
-        <form method="post">
+        <form method="post" action="addtobasket">
             <div class="form-container">
                 <div class="left-side">
                     <div class="dropdown-menu">
-                        <label for="flavor"></label>
-                        <select name="flavor" id="flavor" required>
+                        <label for="bottom"></label>
+                        <select name="bottom_id" id="bottom" required>
                             <option value="" disabled selected>Choose topping</option>
-                            <option th:each="i : ${bottomsList}" th:value="${i}" th:text="${i.flavor}">
+                            <option th:each="bottom : ${bottomsList}" th:value="${bottom.bottom_id}"
+                                    th:text="${bottom.flavor}" th:data-price="${bottom.price}">
                         </select>
+                        <span id="bottomPrice"></span>
                     </div>
 
                     <div class="dropdown-menu">
                         <label for="topping"></label>
-                        <select name="topping" id="topping" required>
+                        <select name="topping_id" id="topping" required>
                             <option value="" disabled selected>Choose topping</option>
-                            <option th:each="i : ${toppingsList}" th:value="${i}" th:text="${i.flavor}">
-                        </select>
+                            <option th:each="topping : ${toppingsList}" th:value="${topping.topping_id}"
+                                    th:text="${topping.flavor}" th:data-price="${topping.price}">
+                        </select><br/>
+                        <span class="sub-text" id="toppingPrice"></span>
                     </div>
                 </div>
 
@@ -79,14 +83,25 @@
                     </select>
                 </div>
             </div>
-            <button class="submit-btn" type="submit" formaction="addtobasket">Læg i kurv</button>
+            <button class="submit-btn" type="submit">Læg i kurv</button>
 
         </form>
 
         <div><p class="error" th:unless="${#strings.isEmpty(message)}" th:text="${message}"></p></div>
     </div>
+    <script>
+        // JavaScript to display price when bottom or topping is selected
+        document.getElementById("bottom").addEventListener("change", function () {
+            var price = this.options[this.selectedIndex].getAttribute("data-price");
+            document.getElementById("bottomPrice").textContent = "Price: " + price;
+        });
 
-
+        document.getElementById("topping").addEventListener("change", function () {
+            var price = this.options[this.selectedIndex].getAttribute("data-price");
+            document.getElementById("toppingPrice").textContent = "Price: " + price;
+        });
+    </script>
 
 </body>
 </html>
+

@@ -15,6 +15,17 @@ public class Orderline {
         this.bottoms_id = bottoms_id;
     }
 
+    public Orderline(int total_price, int toppings_id, int bottoms_id) {
+        this.total_price = total_price;
+        this.toppings_id = toppings_id;
+        this.bottoms_id = bottoms_id;
+    }
+
+    public Orderline(int toppings_id, int bottoms_id) {
+        this.toppings_id = toppings_id;
+        this.bottoms_id = bottoms_id;
+    }
+
     public int getOrderline_id() {
         return orderline_id;
     }

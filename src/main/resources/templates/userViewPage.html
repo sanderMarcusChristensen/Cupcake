@@ -16,8 +16,8 @@
   </header>
 
   <div class="top-section">
-    <a href="../index.html">Homepage</a>
-    <p>( user )</p>
+    <a href="../orderoage" th:href="@{homepage}">Homepage</a>
+    <p th:text="${session.currentUser.user_name}">name</p>
   </div>
 
   <main>

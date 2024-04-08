@@ -17,11 +17,11 @@
 
     <div class="top-section" th:if="${session.currentUser.user_role == 'admin'}">
         <div class="left-side-content">
-            <a class="orders-href" href="orders.html">Ordrer</a>
-            <a class="customers-href" href="customers.html">Kunder</a>
+            <a class="orders-href" href="viewOrder.html" th:href="@{viewOrder}">Ordrer</a>
+            <a class="customers-href" href="userViewPage.html" th:href="@{userViewPage}">Kunder</a>
         </div>
         <div class="right-side-content">
-            <p class="email" th:text="${currentUserName}">e-mail </p>
+            <p class="email" th:text="${session.currentUser.user_name}">name </p>
             <img class="" alt="basket" src="../public/images/basket.svg" th:src="@{/images/basket.svg}">
         </div>
     </div>

@@ -23,8 +23,7 @@
 
 <div class="balance-section">
     <div>
-        <h3>New balance for: </h3>
-        <h3 th:text="${users.name}">Gary</h3>
+        <h3 th:text="${'New balance: ' + users.name}">Gary</h3>
     </div>
 
     <form method="post">

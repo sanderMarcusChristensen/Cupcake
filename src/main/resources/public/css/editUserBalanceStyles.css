@@ -1,0 +1,19 @@
+.balance-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.balance-section form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.balance-section input[type="number"] {
+    margin-bottom: 10px;
+}
+
+.balance-section div{
+   display: flex;
+   justify-content: row;
+
+}

@@ -5,6 +5,7 @@
     <title>User view</title>
     <link href="../public/css/userviewpage.css" th:href="@{/css/userviewpage.css}" rel="stylesheet">
     <link href="../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
+    <link href="../public/css/editUserBalanceStyles.css" th:href="@{/css/editUserBalanceStyles.css}" rel="stylesheet"/>
 </head>
 <body>
 
@@ -21,7 +22,10 @@
 </div>
 
 <div class="balance-section">
-    <h3>New balance for user:</h3>
+    <div>
+        <h3>New balance for: </h3>
+        <h3 th:text="${users.name}">Gary</h3>
+    </div>
 
     <form method="post">
         <input type="number" name="newBalance" placeholder="Enter new balance"/>

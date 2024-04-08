@@ -5,16 +5,26 @@ public class Order {
     private int total_price;
     private String user_name;
     private int orderline_amount;
+    private int user_id;
 
-    public Order(int order_id, int total_price, String user_name, int orderline_amount) {
+    public Order(int order_id, int total_price, String user_name, int orderline_amount, int user_id) {
         this.order_id = order_id;
         this.total_price = total_price;
         this.user_name = user_name;
         this.orderline_amount = orderline_amount;
+        this.user_id = user_id;
     }
 
     public int getOrder_id() {
         return order_id;
+    }
+
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 
     public void setOrder_id(int order_id) {
@@ -52,6 +62,7 @@ public class Order {
                 ", total_price=" + total_price +
                 ", user_name='" + user_name + '\'' +
                 ", orderline_amount=" + orderline_amount +
+                ", user_id=" + user_id +
                 '}';
     }
 }

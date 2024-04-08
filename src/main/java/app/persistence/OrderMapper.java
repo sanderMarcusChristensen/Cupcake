@@ -25,7 +25,8 @@ public class OrderMapper {
                     int total_price = rs.getInt("total_price");
                     String user_name = rs.getString("user_name");
                     int order_amount = rs.getInt("order_amount");
-                    orderList.add(new Order(order_id, total_price, user_name, order_amount));
+                    int user_id = rs.getInt("user_id");
+                    orderList.add(new Order(order_id, total_price, user_name, order_amount,user_id));
                 }
             }
         } catch (SQLException e) {

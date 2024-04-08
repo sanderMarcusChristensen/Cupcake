@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>User view</title>
-    <link href="../public/css/userviewpage.css" th:href="@{/css/userviewpage.css}" rel="stylesheet">
+    <!--<link href="../public/css/userviewpage.css" th:href="@{/css/userviewpage.css}" rel="stylesheet"> -->
     <link href="../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
     <link href="../public/css/viewOrderStyles.css" th:href="@{/css/viewOrderStyles.css}" rel="stylesheet"/>
 </head>
@@ -35,8 +35,8 @@
             <td th:text="${users.name}">Chad</td>
             <td class="order-id-holder" th:text="${getOrderbyId}">12345</td>
             <td class="orderline-id-holder" th:text="${getAllOrder}">
-                <div>
-                    <h4>cupcakes:</h4>
+                <div class="lilNoob">
+                    <h4>Cupcake : </h4>
                     <div class="cupcake-amount">amount: 5</div>
                 </div>
                 <div class="cupcakes">
@@ -47,10 +47,18 @@
         </tr>
         <tr th:each="task: ${userList}">
             <td th:text="${users.name}">Marcus</td>
-            <td class="balance-holder" th:text="${getOrderbyId}">54321</td>
-            <td class="order-id-holder" th:text="${getAllOrder}">Cupcakes:</td>
+            <td class="order-id-holder" th:text="${getOrderbyId}">12345</td>
+            <td class="orderline-id-holder" th:text="${getAllOrder}">
+                <div class="lilNoob">
+                    <h4>Cupcake : </h4>
+                    <div class="cupcake-amount">amount: 2</div>
+                </div>
+                <div class="cupcakes">
+                    <div>Bottom: Pistacio</div>
+                    <div>Topping: Crispy</div>
+                </div>
+            </td>
         </tr>
-        </tbody>
     </table>
 </main>
 

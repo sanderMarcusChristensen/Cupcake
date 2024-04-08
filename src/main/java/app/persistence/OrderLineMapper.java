@@ -66,13 +66,14 @@ public class OrderLineMapper {
         return cupCakeOrder;
     }
 
-    public static boolean addOrderLine(int topping_id, int bottom_id, ConnectionPool connectionPool) throws DatabaseException {
-        String sql = "INSERT INTO orderline (topping_id, bottom_id) VALUES (?,?); ";
+    public static void addOrderLine(int topping_id, int bottom_id, int amount, ConnectionPool connectionPool) throws DatabaseException {
+        String sql = "INSERT INTO orderline (topping_id, bottom_id, amount) VALUES (?,?,?); ";
         boolean retBool = false;
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setInt(1, topping_id);
                 ps.setInt(2, bottom_id);
+                ps.setInt(3, amount);
                 int rowsAffected = ps.executeUpdate();  //what
                 if (rowsAffected == 1) {
                     retBool = true;
@@ -81,7 +82,6 @@ public class OrderLineMapper {
         } catch (SQLException e) {
             throw new DatabaseException("Fejl i tilgangen til databasen", e.getMessage());
         }
-        return retBool;
     }
 
     public static void removeOrderLineById(int orderline_id, ConnectionPool connectionPool) throws DatabaseException {

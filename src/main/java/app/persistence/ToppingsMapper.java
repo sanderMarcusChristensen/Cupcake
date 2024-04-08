@@ -19,7 +19,7 @@ public class ToppingsMapper {
         String sql = "select * from public.toppings";
 
         try (
-                Connection connection = connectionPool.getConnection(); // skal try-catch se sådan ud ?
+                Connection connection = connectionPool.getConnection();
                 PreparedStatement ps = connection.prepareStatement(sql)
         ) {
 
@@ -36,23 +36,25 @@ public class ToppingsMapper {
         return toppingsList;
     }
 
-    static Toppings getAllToppingsById(int top_id, ConnectionPool connectionPool) throws DatabaseException {
+    public static Toppings getToppingsById(int top_id, ConnectionPool connectionPool) throws DatabaseException {
         String sql = "select * from toppings where topping_id = ?";
         Toppings cupcakeTop = null;
-        try (Connection connection = connectionPool.getConnection()) {      //eller skal den se sådan ud?
-            try (PreparedStatement ps = connection.prepareStatement(sql)) {
-                ps.setInt(1, top_id);
-                ResultSet rs = ps.executeQuery();
-                while (rs.next()) {
-                    int topping_id = rs.getInt("topping_id");
-                    String flavor = rs.getString("flavor");
-                    int price = rs.getInt("price");
-                    cupcakeTop = new Toppings(topping_id, flavor, price);
-                }
+        try (
+                Connection connection = connectionPool.getConnection();
+                PreparedStatement ps = connection.prepareStatement(sql)
+        ) {
+            ps.setInt(1, top_id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int topping_id = rs.getInt("topping_id");
+                String flavor = rs.getString("flavor");
+                int price = rs.getInt("price");
+                cupcakeTop = new Toppings(topping_id, flavor, price);
             }
         } catch (SQLException e) {
             throw new DatabaseException("Fejl i tilgangen til databasen", e.getMessage());
         }
         return cupcakeTop;
     }
+
 }

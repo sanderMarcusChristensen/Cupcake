@@ -17,18 +17,20 @@ public class OrderMapper {
     public static List<Order> getAllOrder(ConnectionPool connectionPool) throws DatabaseException {
         String sql = "select * from order;";
 
-        try (Connection connection = connectionPool.getConnection()) {
-            try (PreparedStatement ps = connection.prepareStatement(sql)) {
-                ResultSet rs = ps.executeQuery();
-                while (rs.next()) {
-                    int order_id = rs.getInt("order_id");
-                    int total_price = rs.getInt("total_price");
-                    String user_name = rs.getString("user_name");
-                    int order_amount = rs.getInt("order_amount");
-                    int user_id = rs.getInt("user_id");
-                    orderList.add(new Order(order_id, total_price, user_name, order_amount,user_id));
-                }
+        try (
+                Connection connection = connectionPool.getConnection();
+                PreparedStatement ps = connection.prepareStatement(sql)
+        ) {
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int order_id = rs.getInt("order_id");
+                int total_price = rs.getInt("total_price");
+                String user_name = rs.getString("user_name");
+                int order_amount = rs.getInt("order_amount");
+                int user_id = rs.getInt("user_id");
+                orderList.add(new Order(order_id, total_price, user_name, order_amount, user_id));
             }
+
         } catch (SQLException e) {
             throw new DatabaseException("Fejl i tilgangen til databasen", e.getMessage());
         }
@@ -37,7 +39,4 @@ public class OrderMapper {
     }
 
 
-    //Måske en metode eller to til at "add" og "remove" kager fra sin store "order" men det kigger i på
-    // bom bom gang gang
-    //123
 }

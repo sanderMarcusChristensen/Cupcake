@@ -20,19 +20,21 @@ public class OrderLineMapper {
     public static List<Orderline> getAllOrderLines(ConnectionPool connectionPool) throws DatabaseException {
         String sql = "select * from orderline;";
 
-        try (Connection connection = connectionPool.getConnection()) {
-            try (PreparedStatement ps = connection.prepareStatement(sql)) {
-                ResultSet rs = ps.executeQuery();
-                while (rs.next()) {
-                    int orderline_id = rs.getInt("orderline_id");
-                    int order_id = rs.getInt("order_id");
-                    int total_price = rs.getInt("total_price");
-                    int topping_id = rs.getInt("topping_id");
-                    int bottom_id = rs.getInt("bottom_id");
+        try (
+                Connection connection = connectionPool.getConnection();
+                PreparedStatement ps = connection.prepareStatement(sql)
+        ) {
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int orderline_id = rs.getInt("orderline_id");
+                int order_id = rs.getInt("order_id");
+                int total_price = rs.getInt("total_price");
+                int topping_id = rs.getInt("topping_id");
+                int bottom_id = rs.getInt("bottom_id");
 
-                    orderLineList.add(new Orderline(orderline_id, order_id, total_price, topping_id, bottom_id));
-                }
+                orderLineList.add(new Orderline(orderline_id, order_id, total_price, topping_id, bottom_id));
             }
+
         } catch (SQLException e) {
             throw new DatabaseException("Fejl i tilgangen til databasen", e.getMessage());
         }
@@ -44,55 +46,57 @@ public class OrderLineMapper {
         String sql = "select * from orderline WHERE order_id = ?;";
         Orderline cupCakeOrder = null;
 
-        try (Connection connection = connectionPool.getConnection()) {
-            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+        try (
+                Connection connection = connectionPool.getConnection();
+                PreparedStatement ps = connection.prepareStatement(sql)
+        ) {
 
+            ps.setInt(1, ord_id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int orderline_id = rs.getInt("orderline_id");
+                int order_id = rs.getInt("order_id");
+                int total_price = rs.getInt("total_price");
+                int topping_id = rs.getInt("topping_id");
+                int bottom_id = rs.getInt("bottom_id");
 
-                ps.setInt(1, ord_id);
-                ResultSet rs = ps.executeQuery();
-                while (rs.next()) {
-                    int orderline_id = rs.getInt("orderline_id");
-                    int order_id = rs.getInt("order_id");
-                    int total_price = rs.getInt("total_price");
-                    int topping_id = rs.getInt("topping_id");
-                    int bottom_id = rs.getInt("bottom_id");
-
-                    cupCakeOrder = new Orderline(orderline_id, order_id, total_price, topping_id, bottom_id);
-                }
+                cupCakeOrder = new Orderline(orderline_id, order_id, total_price, topping_id, bottom_id);
             }
+
         } catch (SQLException e) {
             throw new DatabaseException("Fejl i tilgangen til databasen", e.getMessage());
         }
         return cupCakeOrder;
     }
 
-    public static boolean addOrderLine(int topping_id, int bottom_id, ConnectionPool connectionPool) throws DatabaseException {
-        String sql = "INSERT INTO orderline (topping_id, bottom_id) VALUES (?,?); ";
-        boolean retBool = false;
-        try (Connection connection = connectionPool.getConnection()) {
-            try (PreparedStatement ps = connection.prepareStatement(sql)) {
-                ps.setInt(1, topping_id);
-                ps.setInt(2, bottom_id);
-                int rowsAffected = ps.executeUpdate();  //what
-                if (rowsAffected == 1) {
-                    retBool = true;
-                }
-            }
+    public static void addOrderLine(int topping_id, int bottom_id, int amount, ConnectionPool connectionPool) throws DatabaseException {
+        String sql = "INSERT INTO orderline (topping_id, bottom_id, amount) VALUES (?,?,?); ";
+
+        try (
+                Connection connection = connectionPool.getConnection();
+                PreparedStatement ps = connection.prepareStatement(sql)
+        ) {
+            ps.setInt(1, topping_id);
+            ps.setInt(2, bottom_id);
+            ps.setInt(3, amount);
+            int rowsAffected = ps.executeUpdate();
+
         } catch (SQLException e) {
             throw new DatabaseException("Fejl i tilgangen til databasen", e.getMessage());
         }
-        return retBool;
     }
 
     public static void removeOrderLineById(int orderline_id, ConnectionPool connectionPool) throws DatabaseException {
 
         String sql = "DELETE FORM orderline WHERE orderline_id = ?";
 
-        try (Connection connection = connectionPool.getConnection()) {
-            try (PreparedStatement ps = connection.prepareStatement(sql)) {
-                ps.setInt(1, orderline_id);
-                ps.executeUpdate();
-            }
+        try (
+                Connection connection = connectionPool.getConnection();
+                PreparedStatement ps = connection.prepareStatement(sql)
+        ) {
+            ps.setInt(1, orderline_id);
+            ps.executeUpdate();
+
         } catch (SQLException e) {
             throw new DatabaseException("Fejl i tilgangen til databasen", e.getMessage());
         }

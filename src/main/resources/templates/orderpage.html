@@ -86,6 +86,7 @@
             <button class="submit-btn" type="submit">Læg i kurv</button>
 
         </form>
+        <p th:if="${session.cart != null}" th:text="${session.cart.getCount()}">0</p>
 
         <div><p class="error" th:unless="${#strings.isEmpty(message)}" th:text="${message}"></p></div>
     </div>

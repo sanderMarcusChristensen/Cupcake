@@ -3,63 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <title>Check out</title>
-    <link href="../public/css/styles.css"  th:href="@{/css/styles.css}" rel="stylesheet">
-    <link href="../public/css/checkoutpage.css"  th:href="@{/css/checkoutpage.css}" rel="stylesheet">
+    <link href="../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet">
+    <link href="../public/css/checkoutpage.css" th:href="@{/css/checkoutpage.css}" rel="stylesheet">
 </head>
 
 <body>
 
-    <header class="global-header">
-        <a href="../index.html" th:href="@{/}">
-            <img alt="logo" src="../public/images/CupcakeLogo.png" th:src="@{/images/CupcakeLogo.png}"/>
-        </a>
-        <img class="cupcakelogo" alt="logo" src="../public/images/headerimage.png" th:src="@{/images/headerimage.png}"/>
-    </header>
+<header class="global-header">
+    <a href="../index.html" th:href="@{/}">
+        <img alt="logo" src="../public/images/CupcakeLogo.png" th:src="@{/images/CupcakeLogo.png}"/>
+    </a>
+    <img class="cupcakelogo" alt="logo" src="../public/images/headerimage.png" th:src="@{/images/headerimage.png}"/>
+</header>
 
-    <div class="top-section">
-        <a href="../index.html">Homepage</a>
-        <p>( user )</p>
-    </div>
+<div class="top-section">
+    <a href="../index.html">Homepage</a>
+    <p>( user )</p>
+</div>
 
-    <main>
-        <h1>Din kurv</h1>
-        <div class="item-container">
-            <div class="item-head">
-                <h3>CupCake-</h3>
-                <div class="item-amount">
-                    <div>Amount: </div><div>2</div>
-                </div>
-            </div>
-            <div class="item-specifications">
-                <div class="items-topping">
-                    <p>Topping: </p><div>Vanilla</div>
-                </div>
-                <div class="item-bottoms">
-                    <p>Bottom:  </p><div>Chocolate</div>
-                </div>
-            </div>
-        </div>
+<main>
+    <h1>Din kurv</h1>
 
-        <div class="item-container">
-            <div class="item-head">
-                <h3>CupCake-</h3>
-                <div class="item-amount">
-                    <div>Amount: </div><div>2</div>
-                </div>
-            </div>
-            <div class="item-specifications">
-                <div class="items-topping">
-                    <p>Topping: </p><div>Vanilla</div>
-                </div>
-                <div class="item-bottoms">
-                    <p>Bottom:  </p><div>Chocolate</div>
-                </div>
-            </div>
+    <!-- Table to display cart items -->
+    <table>
+        <thead>
+        <tr>
+            <th>Cupcake</th>
+            <th>Amount</th>
+            <th>Topping</th>
+            <th>Bottom</th>
+            <th>Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Iterate over each cart line -->
+        <tr th:each="cartLine : ${session.cart}">
+            <td>Cupcake</td>
+            <td th:text="${cartLine.amount}">2</td>
+            <td th:text="${cartLine.toppings.flavor}">Vanilla</td>
+            <td th:text="${cartLine.bottoms.flavor}">Chocolate</td>
+            <td th:text="${cartLine.getPrice()}">Price</td>
+        </tr>
+        </tbody>
+    </table>
 
-        </div>
-
-        <button type="submit" formmethod=""> Betal </button>
-    </main>
+    <!-- Button for checkout -->
+    <button type="submit" formmethod="">Betal</button>
+</main>
 
 </body>
 </html>

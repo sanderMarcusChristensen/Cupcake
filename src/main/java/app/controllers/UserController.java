@@ -15,6 +15,7 @@ import io.javalin.http.Context;
 import java.util.List;
 
 public class UserController {
+
     public static void addRoutes(Javalin app, ConnectionPool connectionPool) {
         app.post("login", ctx -> login(ctx, connectionPool));
         app.get("logout", ctx -> logout(ctx));

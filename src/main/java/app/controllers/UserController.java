@@ -1,6 +1,7 @@
 package app.controllers;
 
 import app.entities.Bottoms;
+import app.entities.Cart;
 import app.entities.Toppings;
 import app.entities.User;
 import app.exceptions.DatabaseException;

@@ -24,31 +24,40 @@
 <main>
     <h1>Din kurv</h1>
 
-    <!-- Table to display cart items -->
-    <table>
-        <thead>
-        <tr>
-            <th>Cupcake</th>
-            <th>Amount</th>
-            <th>Topping</th>
-            <th>Bottom</th>
-            <th>Price</th>
-        </tr>
-        </thead>
-        <tbody>
-        <!-- Iterate over each cart line -->
-        <tr th:each="cartLine : ${session.cart}">
-            <td>Cupcake</td>
-            <td th:text="${cartLine.amount}">2</td>
-            <td th:text="${cartLine.toppings.flavor}">Vanilla</td>
-            <td th:text="${cartLine.bottoms.flavor}">Chocolate</td>
-            <td th:text="${cartLine.getPrice()}">Price</td>
-        </tr>
-        </tbody>
-    </table>
+    <!-- Check if the cart is empty -->
+    <div th:if="${session.cart == null}">
+        <p>You have no items in the cart</p>
+        <a href="../index.html">Return to Homepage</a>
+    </div>
 
-    <!-- Button for checkout -->
-    <button type="submit" formmethod="">Betal</button>
+    <!-- If the cart is not empty, display cart items -->
+    <div th:if="${session.cart != null}">
+        <!-- Table to display cart items -->
+        <table>
+            <thead>
+            <tr>
+                <th>Cupcake</th>
+                <th>Amount</th>
+                <th>Topping</th>
+                <th>Bottom</th>
+                <th>Price</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Iterate over each cart line -->
+            <tr th:each="cartLine : ${session.cart.cartLines}">
+                <td>Cupcake</td>
+                <td th:text="${cartLine.amount}">2</td>
+                <td th:text="${cartLine.toppings.flavor}">Vanilla</td>
+                <td th:text="${cartLine.bottoms.flavor}">Chocolate</td>
+                <td th:text="${cartLine.getPrice()}">Price</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- Button for checkout -->
+        <button type="submit" formmethod="">Betal</button>
+    </div>
 </main>
 
 </body>

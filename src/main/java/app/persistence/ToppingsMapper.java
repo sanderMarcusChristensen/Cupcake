@@ -36,7 +36,7 @@ public class ToppingsMapper {
         return toppingsList;
     }
 
-    static Toppings getAllToppingsById(int top_id, ConnectionPool connectionPool) throws DatabaseException {
+    public static Toppings getToppingsById(int top_id, ConnectionPool connectionPool) throws DatabaseException {
         String sql = "select * from toppings where topping_id = ?";
         Toppings cupcakeTop = null;
         try (Connection connection = connectionPool.getConnection()) {      //eller skal den se sådan ud?
@@ -55,4 +55,5 @@ public class ToppingsMapper {
         }
         return cupcakeTop;
     }
+
 }

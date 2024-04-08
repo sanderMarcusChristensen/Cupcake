@@ -17,13 +17,14 @@ CREATE TABLE IF NOT EXISTS public."order"
     total_price integer NOT NULL,
     user_name character varying(50) COLLATE pg_catalog."default" NOT NULL,
     orderline_amount integer NOT NULL,
+    user_id integer NOT NULL,
     CONSTRAINT order_pkey PRIMARY KEY (order_id)
     );
 
 CREATE TABLE IF NOT EXISTS public.orderline
 (
     orderline_id serial NOT NULL,
-    order_id bigserial NOT NULL,
+    order_id integer NOT NULL,
     total_price integer NOT NULL,
     topping_id integer NOT NULL,
     bottom_id integer NOT NULL,
@@ -49,6 +50,14 @@ CREATE TABLE IF NOT EXISTS public.users
     CONSTRAINT unique_user_name UNIQUE (user_name)
     );
 
+ALTER TABLE IF EXISTS public."order"
+    ADD CONSTRAINT fk_orders_user FOREIGN KEY (user_id)
+    REFERENCES public.users (user_id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+       ON DELETE NO ACTION
+    NOT VALID;
+
+
 ALTER TABLE IF EXISTS public.orderline
     ADD CONSTRAINT fkey_bottoms_orderline FOREIGN KEY (bottom_id)
     REFERENCES public.bottoms (bottom_id) MATCH SIMPLE
@@ -60,6 +69,14 @@ ALTER TABLE IF EXISTS public.orderline
 ALTER TABLE IF EXISTS public.orderline
     ADD CONSTRAINT fkey_toppings_orderline FOREIGN KEY (topping_id)
     REFERENCES public.toppings (topping_id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+       ON DELETE NO ACTION
+    NOT VALID;
+
+
+ALTER TABLE IF EXISTS public.orderline
+    ADD CONSTRAINT fkey_order_orders FOREIGN KEY (order_id)
+    REFERENCES public."order" (order_id) MATCH SIMPLE
     ON UPDATE NO ACTION
        ON DELETE NO ACTION
     NOT VALID;
@@ -87,9 +104,7 @@ VALUES ('Chocolate', 5.00),
 -- Inserting data into users table
 INSERT INTO users (user_name, user_password, user_wallet, user_role)
 VALUES
-    ('user1', '1234', 100.00, 'regular'),
-    ('user2', '1234', 200.00, 'regular'),
-    ('admin', 'admin', 500.00, 'admin');
-
-
+    ('chad', '1234', 600.00, 'admin'),
+    ('gary', '1234', 200.00, 'user'),
+    ('jeff', 'admin', 500.00, 'user');
 END;

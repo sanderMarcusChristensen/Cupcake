@@ -1,0 +1,14 @@
+
+.cupcake-amount {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+
+.cupcakes {
+    margin-top: 5px;
+}
+
+.cupcakes div {
+    font-size: 14px;
+}

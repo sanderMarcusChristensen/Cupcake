@@ -1,24 +1,41 @@
 
-.cupcake-amount {
-    display: inline-block;
-    margin-left: 10px;
-}
-
-
-.cupcakes {
-    margin-top: 5px;
-}
-
-.cupcakes div {
-    font-size: 14px;
+main{
+    min-width: 500px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
 
 }
+
+
+table{
+    margin-top: 2rem;
+}
+
+table, th, td {
+    border-collapse: collapse;
+    border: 2px solid #F0EFF0;
+    padding: 1rem;
+
+}
+
 .lilNoob, .lilNoob div, .lilNoob h4{
     display: flex;
-    align-content: center;
-    margin: 0;
+    justify-content: space-between;
+    margin: 0 10px 0;
+    padding: 5px;
+}
 
+h4{
+    font-weight: normal;
+}
 
+.cupcakes{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    margin-left: 30px;
+    font-size: 12px;
 }
 
 

@@ -87,9 +87,7 @@ VALUES ('Chocolate', 5.00),
 -- Inserting data into users table
 INSERT INTO users (user_name, user_password, user_wallet, user_role)
 VALUES
-    ('user1', '1234', 100.00, 'regular'),
-    ('user2', '1234', 200.00, 'regular'),
-    ('admin', 'admin', 500.00, 'admin');
-
-
+    ('chad', '1234', 600.00, 'admin'),
+    ('gary', '1234', 200.00, 'user'),
+    ('jeff', 'admin', 500.00, 'user');
 END;

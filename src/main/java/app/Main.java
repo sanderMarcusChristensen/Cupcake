@@ -1,6 +1,7 @@
 package app;
 
 import app.config.ThymeleafConfig;
+import app.controllers.AdminController;
 import app.controllers.CartController;
 import app.controllers.OrderController;
 import app.controllers.UserController;
@@ -32,6 +33,6 @@ public class Main
         UserController.addRoutes(app, connectionPool);
         OrderController.addRoutes(app, connectionPool);
         CartController.addRoutes(app, connectionPool);
-
+        AdminController.addRoutes(app, connectionPool);
     }
 }

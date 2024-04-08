@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Createuser</title>
-    <link href="../public/css/loginpage.css" th:href="@{/css/loginpage.css}" rel="stylesheet">
     <link href="../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
+    <link href="../public/css/loginpage.css" th:href="@{/css/loginpage.css}" rel="stylesheet">
 </head>
 <body>
 
@@ -21,7 +21,7 @@
     <input type="password" name="password2" placeholder="Enter your password again"/>
 
 
-    <button type="submit" formaction="createuser">Create account</button>
+    <button class="btn" type="submit" formaction="createuser">Create account</button>
 
     <div><p class="error" th:unless="${#strings.isEmpty(message)}" th:text="${message}"></p></div>
 </form>

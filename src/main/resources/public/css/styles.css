@@ -3,6 +3,10 @@
 
 }
 
+body{
+    height: 100%;
+}
+
 /* ----- header ----- */
 
 .global-header {
@@ -30,11 +34,13 @@
     padding: 0.5rem 1.5rem 0.5rem 1.5rem;
     margin: 8px 0 8px;
 }
+
 .top-section div{
     display: flex;
     flex-direction: row;
     align-items: center;
 }
+
 .top-section a, .top-section p {
     display: flex;
     align-items: center;
@@ -52,11 +58,11 @@
 
 /* ----- buttons ----- */
 
-.btn[type="submit"], .btn {
-    background-color: #3E8CCD;
+.btn[type="submit"]:hover {
+    background-color: #AC58E4;
 }
 
-.btn[type="submit"], .btn {
+.btn[type="submit"] {
     background-color:#421064;
     color: white;
     padding: 10px 20px;

@@ -11,4 +11,14 @@
 
 .cupcakes div {
     font-size: 14px;
+
 }
+.lilNoob, .lilNoob div, .lilNoob h4{
+    display: flex;
+    align-content: center;
+    margin: 0;
+
+
+}
+
+

@@ -1,8 +1,6 @@
 package app.persistence;
 
 import app.entities.Bottoms;
-import app.entities.Toppings;
-import app.entities.User;
 import app.exceptions.DatabaseException;
 
 import java.sql.Connection;
@@ -38,7 +36,7 @@ public class BottomsMapper {
         return bottomsList;
     }
 
-    static Bottoms getAllBottomsById(int bot_id, ConnectionPool connectionPool) throws DatabaseException {
+    public static Bottoms getBottomsById(int bot_id, ConnectionPool connectionPool) throws DatabaseException {
 
         String sql = "select * from public.bottoms WHERE bottom_id = ?";
         Bottoms cupCakeBottom = null;
@@ -61,4 +59,5 @@ public class BottomsMapper {
         }
         return cupCakeBottom;
     }
+
 }

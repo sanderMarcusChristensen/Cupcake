@@ -21,7 +21,6 @@
             <a class="customers-href" href="userViewPage.html" th:href="@{userViewPage}">Kunder</a>
         </div>
         <div class="right-side-content">
-            <p class="email" th:text="${currentUserName}">e-mail </p>
             <a href="../checkOutPage.html" th:href="@{viewbasket}">
             <p class="email" th:text="${session.currentUser.user_name}">name </p>
             <img class="" alt="basket" src="../public/images/basket.svg" th:src="@{/images/basket.svg}">

@@ -16,7 +16,9 @@ public class OrderController {
     protected static List<Orderline> basket = new ArrayList<>();
     public static void addRoutes(Javalin app, ConnectionPool connectionPool) {
         app.post("addtobasket", ctx -> addtobasket(ctx, connectionPool));
-
+        app.get("viewOrder", ctx -> ctx.render("viewOrder.html"));
+        app.get("userViewPage", ctx -> ctx.render("userViewPage.html"));
+        app.get("homepage", ctx -> ctx.render("orderpage.html"));
     }
 
     private static void addtobasket(Context ctx, ConnectionPool connectionPool) {

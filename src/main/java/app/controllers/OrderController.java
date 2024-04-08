@@ -42,6 +42,16 @@ public class OrderController {
 
         } catch (DatabaseException e) {
             ctx.attribute("message", "Noget gik galt. Prøv evt. igen");
+            List<Bottoms> bottomsList = null;
+            List<Toppings> toppingsList = null;
+            try {
+                bottomsList = BottomsMapper.getAllBottoms(connectionPool);
+                toppingsList = ToppingsMapper.getAllToppings(connectionPool);
+            } catch (DatabaseException ex) {
+                ctx.attribute("message", e.getMessage());
+            }
+            ctx.attribute("bottomsList", bottomsList);
+            ctx.attribute("toppingsList", toppingsList);
             ctx.render("orderpage.html");
         }
     }

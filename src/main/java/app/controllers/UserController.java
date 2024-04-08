@@ -71,6 +71,5 @@ public class UserController {
             ctx.attribute("message", e.getMessage());
             ctx.render("index.html");
         }
-
     }
 }

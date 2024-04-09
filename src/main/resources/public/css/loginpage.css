@@ -43,23 +43,23 @@ h1{
     justify-content: space-between;
 }
 
-.btn[type="submit"] {
+a, .btn[type="submit"] {
     background-color:#421064;
     color: white;
     padding: 10px 20px;
-    margin: 8px 0;
+    margin: 5px 0;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
-.signUp{
-    width: 60%;
+.signUp_LogOut a{
+    width: 49%;
     text-decoration: none;
     text-align: center;
 }
-.logOut{
+.signUp_LogOut button{
     width: 35%;
 }
 

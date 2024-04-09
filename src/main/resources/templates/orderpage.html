@@ -1,13 +1,13 @@
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Orderpage</title>
-        <link href="../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet">
-        <link href="../public/css/orderpagestyles.css" th:href="@{/css/orderpagestyles.css}" rel="stylesheet"/>
-    </head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Orderpage</title>
+    <link href="../public/css/orderpagestyles.css" th:href="@{/css/orderpagestyles.css}" rel="stylesheet"/>
+    <link href="../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet">
+</head>
 
-    <body>
+<body>
     <header class="global-header">
         <a href="../index.html" th:href="@{/}">
             <img alt="logo" src="../public/images/CupcakeLogo.png" th:src="@{/images/CupcakeLogo.png}"/>
@@ -53,8 +53,10 @@
                         <label for="bottom"></label>
                         <select name="bottom_id" id="bottom" required>
                             <option value="" disabled selected>Choose topping</option>
-                            <option th:each="bottom : ${bottomsList}" th:value="${bottom.bottom_id}"
-                                    th:text="${bottom.flavor}" th:data-price="${bottom.price}">
+                            <option th:each="bottom : ${bottomsList}" th:value="${bottom.bottom_id}">
+                                <div th:text="${bottom.flavor}" th:data-price="${bottom.price}">
+
+                                </div>
                         </select>
                         <span id="bottomPrice"></span>
                     </div>
@@ -65,7 +67,7 @@
                             <option value="" disabled selected>Choose topping</option>
                             <option th:each="topping : ${toppingsList}" th:value="${topping.topping_id}"
                                     th:text="${topping.flavor}" th:data-price="${topping.price}">
-                        </select><br/>
+                        </select>
                         <span class="sub-text" id="toppingPrice"></span>
                     </div>
                 </div>
@@ -92,6 +94,7 @@
 
         <div><p class="error" th:unless="${#strings.isEmpty(message)}" th:text="${message}"></p></div>
     </div>
+
     <script>
         // JavaScript to display price when bottom or topping is selected
         document.getElementById("bottom").addEventListener("change", function () {
@@ -104,7 +107,6 @@
             document.getElementById("toppingPrice").textContent = "Price: " + price;
         });
     </script>
-
 </body>
 </html>
 

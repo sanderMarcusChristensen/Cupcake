@@ -3,9 +3,6 @@
 
 }
 
-body{
-    height: 100%;
-}
 
 /* ----- header ----- */
 
@@ -66,7 +63,7 @@ body{
     background-color:#421064;
     color: white;
     padding: 10px 20px;
-    margin: 8px 0;
+    margin: 5px 0;
     border: none;
     border-radius: 5px;
     cursor: pointer;

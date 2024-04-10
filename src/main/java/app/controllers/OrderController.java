@@ -16,20 +16,39 @@ public class OrderController {
     }
 
     private static void pay(Context ctx, ConnectionPool connectionPool) {
-        ctx.req().getSession().invalidate();
+//        ctx.req().getSession().invalidate();
 
-        int total_price = Integer.parseInt(ctx.formParam("total_price"));
-        String user_name = ctx.formParam("user_name");
-        int orderline_amount = Integer.parseInt(ctx.formParam("orderline_amount"));
-        int user_id = Integer.parseInt(ctx.formParam("user_id"));
+        Cart cart = ctx.sessionAttribute("cart");
+        User user = ctx.sessionAttribute("currentUser");
+
+        int total_price = cart.getTotalPrice();
+
+        int orderline_amount = cart.getCount();
+
+        int user_id = user.getUser_id();
 
         try {
             // Call the addOrderToDatabase method to save the order into the database
-            OrderMapper.addOrderToDatabase(new Order(0, total_price, user_name, orderline_amount, user_id), connectionPool);
-            // Redirect to the desired page (e.g., orderpage.html) after successful payment
-            ctx.redirect("/orderpage.html");
+            int orderId = OrderMapper.addOrderToDatabase(new Order(0, total_price, orderline_amount, user_id), connectionPool);
+
+            for (CartLine cartLine : cart.cartLines){
+                int totalPrice = cartLine.getPrice();
+                int topping_id = cartLine.getToppings().getTopping_id();
+                int bottom_id = cartLine.getBottoms().getBottom_id();
+                int amount = cartLine.getAmount();
+                OrderLineMapper.addOrderLine(orderId, totalPrice, topping_id, bottom_id, amount, connectionPool);
+            }
+
+
+            cart.cartLines.clear();
+
+            List<Bottoms> bottomsList = ctx.sessionAttribute("bottomsList");
+            List<Toppings> toppingsList = ctx.sessionAttribute("toppingsList");
+            ctx.attribute("bottomsList", bottomsList);
+            ctx.attribute("toppingsList", toppingsList);
+            ctx.render("orderpage.html");
+
         } catch (DatabaseException e) {
-            // If an error occurs while saving the order, redirect to the homepage with an error message
             ctx.attribute("message", e.getMessage());
             ctx.redirect("/");
         }

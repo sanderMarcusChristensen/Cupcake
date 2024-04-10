@@ -15,7 +15,6 @@ CREATE TABLE IF NOT EXISTS public."order"
 (
     order_id serial NOT NULL,
     total_price integer NOT NULL,
-    user_name character varying(50) COLLATE pg_catalog."default" NOT NULL,
     orderline_amount integer NOT NULL,
     user_id integer NOT NULL,
     CONSTRAINT order_pkey PRIMARY KEY (order_id)
@@ -28,6 +27,7 @@ CREATE TABLE IF NOT EXISTS public.orderline
     total_price integer NOT NULL,
     topping_id integer NOT NULL,
     bottom_id integer NOT NULL,
+    amount integer NOT NULL,
     CONSTRAINT orderline_pkey PRIMARY KEY (orderline_id)
     );
 

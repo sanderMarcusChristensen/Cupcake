@@ -8,25 +8,21 @@
 </head>
 <body>
 
-<header class="global-header">
-    <a href="../index.html" th:href="@{/}">
-        <img alt="logo" src="../public/images/CupcakeLogo.png" th:src="@{/images/CupcakeLogo.png}"/>
-    </a>
-    <img class="cupcakelogo" alt="logo" src="../public/images/headerimage.png" th:src="@{/images/headerimage.png}"/>
-</header>
+    <header class="global-header">
+        <a href="../index.html" th:href="@{/}">
+            <img alt="logo" src="../public/images/CupcakeLogo.png" th:src="@{/images/CupcakeLogo.png}"/>
+        </a>
+        <img class="cupcakelogo" alt="logo" src="../public/images/headerimage.png" th:src="@{/images/headerimage.png}"/>
+    </header>
 
-<form class="generic-form" method="post">
-    <input type="text" name="username" placeholder="Enter your username"/>
-    <input type="password" name="password1" placeholder="Enter your password"/>
-    <input type="password" name="password2" placeholder="Enter your password again"/>
+    <form class="generic-form" method="post">
+        <input type="text" name="username" placeholder="Enter your username"/>
+        <input type="password" name="password1" placeholder="Enter your password"/>
+        <input type="password" name="password2" placeholder="Enter your password again"/>
 
+        <button class="btn logIn" type="submit" formaction="createuser">Create account</button>
 
-    <button class="btn" type="submit" formaction="createuser">Create account</button>
-
-    <div><p class="error" th:unless="${#strings.isEmpty(message)}" th:text="${message}"></p></div>
-</form>
-
-
-
+        <div><p class="error" th:unless="${#strings.isEmpty(message)}" th:text="${message}"></p></div>
+    </form>
 </body>
 </html>

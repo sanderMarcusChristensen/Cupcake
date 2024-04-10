@@ -8,9 +8,8 @@ h1{
 /* Styling the login form container */
 .generic-form {
     width: 300px;
-    margin: 0 auto;
+    margin: 20px auto;
     padding: 20px;
-    /*background-color: #F0EFF0;*/
     border-radius: 5px;
 }
 

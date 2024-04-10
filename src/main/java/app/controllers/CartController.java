@@ -26,7 +26,6 @@ public class CartController {
         int toppingId = Integer.parseInt(ctx.formParam("topping_id"));
         int amount = Integer.parseInt(ctx.formParam("amount"));
 
-        User user = ctx.sessionAttribute("currentUser");
         Cart cart = ctx.sessionAttribute("cart");
 
         List<Bottoms> bottomsList = ctx.sessionAttribute("bottomsList");

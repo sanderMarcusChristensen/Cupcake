@@ -17,7 +17,7 @@
 </header>
 
 <div class="top-section">
-    <a href="../orderoage" th:href="@{homepage}">Homepage</a>
+    <a href="../orderpage.html" th:href="@{backToHomepage}">Homepage</a>
     <p th:text="${session.currentUser.user_name}">name</p>
 </div>
 
@@ -27,7 +27,7 @@
     <!-- Check if the cart is empty -->
     <div th:if="${session.cart == null}">
         <p>You have no items in the cart</p>
-        <a href="../index.html">Return to Homepage</a>
+        <a href="../orderpage.html" th:href="@{backToHomepage}">Return to Homepage</a>
     </div>
 
     <!-- If the cart is not empty, display cart items -->
@@ -56,7 +56,7 @@
         </table>
 
         <!-- Button for checkout -->
-        <button type="submit" formmethod="">Betal</button>
+        <button type="submit" formmethod="pay">Betal</button>
     </div>
 </main>
 

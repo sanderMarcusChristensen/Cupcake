@@ -63,9 +63,14 @@ public class UserController {
             // Hvis ja, send videre til forsiden med login besked
             List<Bottoms> bottomsList = BottomsMapper.getAllBottoms(connectionPool);
             List<Toppings> toppingsList = ToppingsMapper.getAllToppings(connectionPool);
+
+            ctx.sessionAttribute("bottomsList", bottomsList);
+            ctx.sessionAttribute("toppingsList", toppingsList);
+
             ctx.attribute("currentUserName", user.getUser_name());
             ctx.attribute("bottomsList", bottomsList);
             ctx.attribute("toppingsList", toppingsList);
+
             ctx.render("orderpage.html");
 
         } catch (DatabaseException e) {

@@ -68,30 +68,23 @@ html, body {
     height: 100%;
 }
 
-.right-side-content a img{
+.right-side-content a{
     position: relative;
-}
-
-.right-side-content a div{
-    position: absolute;
-    padding: 5px;
-    background: #F5190B;
-    border-radius: 100%;
 }
 
 .cart-count{
     display: flex;
     justify-content: center;
     align-content: center;
+    position: absolute;
     width: 15px;
     height: 15px;
     color: white;
-    position: absolute;
     padding: 4px;
     background: #F5190B;
     border-radius: 50px;
-    right: 57px;
-    top: 308px
+    right: -10px;
+    top: -5px;
 }
 
 
@@ -129,7 +122,6 @@ form{
 
 .left-side{
     display: flex;
-
 }
 
 .dropdown-menu select{

@@ -24,6 +24,7 @@
             <a href="../checkOutPage.html" th:href="@{viewbasket}">
                 <p class="email" th:text="${session.currentUser.user_name}">name </p>
                 <img class="" alt="basket" src="../public/images/basket.svg" th:src="@{/images/basket.svg}">
+                <div class="cart-count" th:if="${session.cart != null}" th:text="${session.cart.getCount()}">0</div>
             </a>
         </div>
     </div>
@@ -35,7 +36,7 @@
         <div class="right-side-content">
             <a href="../checkOutPage.html" th:href="@{viewbasket}">
                 <img class="" alt="basket" src="../public/images/basket.svg" th:src="@{/images/basket.svg}">
-                <div th:if="${session.cart != null}" th:text="${session.cart.getCount()}">0</div>
+                <div class="cart-count" th:if="${session.cart != null}" th:text="${session.cart.getCount()}">0</div>
             </a>
         </div>
     </div>

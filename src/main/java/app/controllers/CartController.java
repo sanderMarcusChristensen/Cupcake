@@ -13,7 +13,6 @@ import java.util.List;
 
 public class CartController {
 
-    Cart cart;
 
     public static void addRoutes(Javalin app, ConnectionPool connectionPool) {
         app.post("addtobasket", ctx -> addtobasket(ctx, connectionPool));

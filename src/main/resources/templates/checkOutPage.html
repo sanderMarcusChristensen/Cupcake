@@ -22,42 +22,50 @@
     </div>
 
     <main>
-        <h1>Din kurv</h1>
+        <form method="post" action="pay">
+            <h1>Din kurv</h1>
 
-        <!-- Check if the cart is empty -->
-        <div th:if="${session.cart == null}">
-            <p>You have no items in the cart</p>
-            <!-- <a href="../orderpage.html" th:href="@{backToHomepage}">Return to Homepage</a> -->
-        </div>
+            <!-- Check if the cart is empty -->
+            <div th:if="${session.cart == null}">
+                <p>You have no items in the cart</p>
+                <!-- <a href="../orderpage.html" th:href="@{backToHomepage}">Return to Homepage</a> -->
+            </div>
 
-        <!-- If the cart is not empty, display cart items -->
-        <div th:if="${session.cart != null}">
-            <!-- Table to display cart items -->
-            <table class="item-container">
-                <thead>
-                <tr>
-                    <th>Cupcake</th>
-                    <th>Amount</th>
-                    <th>Bottom</th>
-                    <th>Topping</th>
-                    <th>Price</th>
-                </tr>
-                </thead>
-                <tbody>
-                <!-- Iterate over each cart line -->
-                <tr th:each="cartLine : ${session.cart.cartLines}">
-                    <td>Cupcake</td>
-                    <td th:text="${cartLine.amount}">2</td>
-                    <td th:text="${cartLine.bottoms.flavor}">Chocolate</td>
-                    <td th:text="${cartLine.toppings.flavor}">Vanilla</td>
-                    <td th:text="${cartLine.getPrice()}">Price</td>
-                </tr>
-                </tbody>
-            </table>
+            <!-- If the cart is not empty, display cart items -->
+            <div th:if="${session.cart != null}">
+                <!-- Table to display cart items -->
+                <table class="item-container">
+                    <thead>
+                    <tr>
+                        <th>Cupcake</th>
+                        <th>Amount</th>
+                        <th>Bottom</th>
+                        <th>Topping</th>
+                        <th>Price</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- Iterate over each cart line -->
+                    <tr th:each="cartLine : ${session.cart.cartLines}">
+                        <td>Cupcake</td>
+                        <td th:text="${cartLine.amount}">2</td>
+                        <td th:text="${cartLine.bottoms.flavor}">Chocolate</td>
+                        <td th:text="${cartLine.toppings.flavor}">Vanilla</td>
+                        <td th:text="${cartLine.getPrice()}">Price</td>
+                    </tr>
+                    </tbody>
+                </table>
 
-            <!-- Button for checkout -->
-            <button type="submit" formmethod="pay">Betal</button>
-        </div>
+                <!-- Button for checkout -->
+                <form action="pay" method="post">
+                    <input type="hidden" name="total_price" value="...">
+                    <input type="hidden" name="user_name" value="...">
+                    <input type="hidden" name="orderline_amount" value="...">
+                    <input type="hidden" name="user_id" value="...">
+                    <button type="submit">Betal</button>
+                </form>
+            </div>
+        </form>
     </main>
 
 </body>

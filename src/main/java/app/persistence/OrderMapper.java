@@ -38,5 +38,24 @@ public class OrderMapper {
 
     }
 
+    public static void addOrderToDatabase(Order order, ConnectionPool connectionPool) throws DatabaseException {
+        String sql = "INSERT INTO \"order\" (total_price, user_name, orderline_amount, user_id) VALUES (?, ?, ?, ?);";
 
+        try (
+                Connection connection = connectionPool.getConnection();
+                PreparedStatement ps = connection.prepareStatement(sql)
+        ) {
+            ps.setInt(1, order.getTotal_price());
+            ps.setString(2, order.getUser_name());
+            ps.setInt(3, order.getOrderline_amount());
+            ps.setInt(4, order.getUser_id());
+
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw new DatabaseException("Fejl i tilgangen til databasen", e.getMessage());
+        }
+    }
 }
+
+
+

@@ -9,64 +9,57 @@
 
 <body>
 
-    <header class="global-header">
-        <a href="../index.html" th:href="@{/}">
-            <img alt="logo" src="../public/images/CupcakeLogo.png" th:src="@{/images/CupcakeLogo.png}"/>
-        </a>
-        <img class="cupcakelogo" alt="logo" src="../public/images/headerimage.png" th:src="@{/images/headerimage.png}"/>
-    </header>
+<header class="global-header">
+    <a href="../index.html" th:href="@{/}">
+        <img alt="logo" src="../public/images/CupcakeLogo.png" th:src="@{/images/CupcakeLogo.png}"/>
+    </a>
+    <img class="cupcakelogo" alt="logo" src="../public/images/headerimage.png" th:src="@{/images/headerimage.png}"/>
+</header>
 
-    <div class="top-section">
-        <a href="orderpage.html" th:href="@{backToHomepage}">Homepage</a>
-        <p th:text="${session.currentUser.user_name}">name</p>
-    </div>
+<div class="top-section">
+    <a href="orderpage.html" th:href="@{backToHomepage}">Homepage</a>
+    <p th:text="${session.currentUser.user_name}">name</p>
+</div>
 
-    <main>
-        <form method="post" action="pay">
-            <h1>Din kurv</h1>
+<main>
+    <form class="generic-form" method="post">
+        <h1>Din kurv</h1>
 
-            <!-- Check if the cart is empty -->
-            <div th:if="${session.cart == null}">
-                <p>You have no items in the cart</p>
-                <!-- <a href="../orderpage.html" th:href="@{backToHomepage}">Return to Homepage</a> -->
-            </div>
+        <!-- Check if the cart is empty -->
+        <div th:if="${session.cart == null}">
+            <p>You have no items in the cart</p>
+            <!-- <a href="../orderpage.html" th:href="@{backToHomepage}">Return to Homepage</a> -->
+        </div>
 
-            <!-- If the cart is not empty, display cart items -->
-            <div th:if="${session.cart != null}">
-                <!-- Table to display cart items -->
-                <table class="item-container">
-                    <thead>
-                    <tr>
-                        <th>Cupcake</th>
-                        <th>Amount</th>
-                        <th>Bottom</th>
-                        <th>Topping</th>
-                        <th>Price</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <!-- Iterate over each cart line -->
-                    <tr th:each="cartLine : ${session.cart.cartLines}">
-                        <td>Cupcake</td>
-                        <td th:text="${cartLine.amount}">2</td>
-                        <td th:text="${cartLine.bottoms.flavor}">Chocolate</td>
-                        <td th:text="${cartLine.toppings.flavor}">Vanilla</td>
-                        <td th:text="${cartLine.getPrice()}">Price</td>
-                    </tr>
-                    </tbody>
-                </table>
+        <!-- If the cart is not empty, display cart items -->
+        <div th:if="${session.cart != null}">
+            <!-- Table to display cart items -->
+            <table class="item-container">
+                <thead>
+                <tr>
+                    <th>Cupcake</th>
+                    <th>Amount</th>
+                    <th>Bottom</th>
+                    <th>Topping</th>
+                    <th>Price</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- Iterate over each cart line -->
+                <tr th:each="cartLine : ${session.cart.cartLines}">
+                    <td>Cupcake</td>
+                    <td th:text="${cartLine.amount}">2</td>
+                    <td th:text="${cartLine.bottoms.flavor}">Chocolate</td>
+                    <td th:text="${cartLine.toppings.flavor}">Vanilla</td>
+                    <td th:text="${cartLine.getPrice()}">Price</td>
+                </tr>
+                </tbody>
+            </table>
 
-                <!-- Button for checkout -->
-                <form action="pay" method="post">
-                    <input type="hidden" name="total_price" value="...">
-                    <input type="hidden" name="user_name" value="...">
-                    <input type="hidden" name="orderline_amount" value="...">
-                    <input type="hidden" name="user_id" value="...">
-                    <button type="submit">Betal</button>
-                </form>
-            </div>
-        </form>
-    </main>
+            <button type="submit" formaction="/pay">Betal</button>
+        </div>
+    </form>
+</main>
 
 </body>
 </html>

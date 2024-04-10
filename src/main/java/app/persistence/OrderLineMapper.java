@@ -69,16 +69,18 @@ public class OrderLineMapper {
         return cupCakeOrder;
     }
 
-    public static void addOrderLine(int topping_id, int bottom_id, int amount, ConnectionPool connectionPool) throws DatabaseException {
-        String sql = "INSERT INTO orderline (topping_id, bottom_id, amount) VALUES (?,?,?); ";
+    public static void addOrderLine(int orderId, int total_price, int topping_id, int bottom_id, int amount, ConnectionPool connectionPool) throws DatabaseException {
+        String sql = "INSERT INTO orderline (order_id, total_price, topping_id, bottom_id, amount) VALUES (?,?,?,?,?); ";
 
         try (
                 Connection connection = connectionPool.getConnection();
                 PreparedStatement ps = connection.prepareStatement(sql)
         ) {
-            ps.setInt(1, topping_id);
-            ps.setInt(2, bottom_id);
-            ps.setInt(3, amount);
+            ps.setInt(1, orderId);
+            ps.setInt(2, total_price);
+            ps.setInt(3, topping_id);
+            ps.setInt(4, bottom_id);
+            ps.setInt(5, amount);
             int rowsAffected = ps.executeUpdate();
 
         } catch (SQLException e) {

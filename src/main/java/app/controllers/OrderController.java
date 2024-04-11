@@ -12,6 +12,7 @@ import java.util.List;
 public class OrderController {
     public static void addRoutes(Javalin app, ConnectionPool connectionPool) {
         app.post("/pay", ctx -> pay(ctx, connectionPool));
+        app.get("/orders", ctx -> getAllOrders(ctx, connectionPool));
         //app.get("pay", ctx -> ctx.redirect("orderpage.html"));
     }
 
@@ -53,7 +54,24 @@ public class OrderController {
             ctx.redirect("/");
         }
     }
+    private static void getAllOrders(Context ctx, ConnectionPool connectionPool) {
+        try {
+            // Retrieve all orders from the database
+            List<Order> orders = OrderMapper.getAllOrder(connectionPool);
+
+            // Set the orders as an attribute in the context
+            ctx.attribute("orders", orders);
+
+            // Render the HTML template to display the orders
+            ctx.render("orders.html");
+        } catch (DatabaseException e) {
+            // If an error occurs while retrieving orders, redirect to the homepage with an error message
+            ctx.attribute("message", e.getMessage());
+            ctx.redirect("/");
+        }
+    }
 }
+
 
 
 

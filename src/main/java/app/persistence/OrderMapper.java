@@ -12,10 +12,13 @@ import java.util.List;
 
 public class OrderMapper {
 
-    public static List<Order> orderList = new ArrayList<>();
 
     public static List<Order> getAllOrder(ConnectionPool connectionPool) throws DatabaseException {
-        String sql = "select * from order;";
+
+        List<Order> orderList = new ArrayList<>();
+
+        String sql = "select o.order_id, o.total_price, o.orderline_amount, o.user_id, u.user_name " +
+                "from public.order o inner join users u using(user_id)";
 
         try (
                 Connection connection = connectionPool.getConnection();
@@ -23,18 +26,19 @@ public class OrderMapper {
         ) {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
+
                 int order_id = rs.getInt("order_id");
                 int total_price = rs.getInt("total_price");
-                int order_amount = rs.getInt("order_amount");
+                int orderline_amount = rs.getInt("orderline_amount");
                 int user_id = rs.getInt("user_id");
-                orderList.add(new Order(order_id, total_price, order_amount, user_id));
+                String user_name = rs.getString("user_name");
+                orderList.add(new Order(order_id, total_price, orderline_amount, user_id, user_name));
             }
-
         } catch (SQLException e) {
-            throw new DatabaseException("Fejl i tilgangen til databasen", e.getMessage());
+            throw new DatabaseException("Error while retrieving orders: " + e.getMessage());
         }
-        return orderList;
 
+        return orderList;
     }
 
     public static int addOrderToDatabase(Order order, ConnectionPool connectionPool) throws DatabaseException {
@@ -60,8 +64,3 @@ public class OrderMapper {
         }
     }
 }
-
-
-
-
-

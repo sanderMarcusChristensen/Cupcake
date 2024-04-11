@@ -1,0 +1,27 @@
+@startuml
+'https://plantuml.com/state-diagram
+
+scale 350 width
+[*] --> Server_start
+
+state Server_start {
+
+  User --> Login: user has an account
+  User --> Create_account: first time user
+  Login --> Order_page: order som cupcakes
+  Create_account --> Login: need to login after making login
+  User --> Login_as_Admin: if user_account is admin"
+  Order_page --> Basket_and_payButton: go to basket to pay
+  Basket_and_payButton --> Order_processing_in_store: after paying, order getting send to store
+
+
+  state Admin {
+  Login_as_Admin --> Admin: if admin
+  Admin --> Edit_user_balance: can edit users balance
+  Admin --> View_all_orders: see all orders in the system
+
+  }
+
+}
+
+@enduml

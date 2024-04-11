@@ -6,6 +6,10 @@ import java.util.List;
 public class Cart {
     public List<CartLine> cartLines = new ArrayList<>();
 
+    public List<CartLine> getCartLines() {
+        return cartLines;
+    }
+
     public int getCount() {
         return cartLines.size();
     }

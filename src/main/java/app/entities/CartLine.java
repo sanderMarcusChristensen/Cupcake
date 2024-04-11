@@ -27,4 +27,16 @@ public class CartLine {
     public int getPrice() {
         return (toppings.getPrice() + bottoms.getPrice()) * amount;
     }
+
+    public void setToppings(Toppings toppings) {
+        this.toppings = toppings;
+    }
+
+    public void setBottoms(Bottoms bottoms) {
+        this.bottoms = bottoms;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
 }

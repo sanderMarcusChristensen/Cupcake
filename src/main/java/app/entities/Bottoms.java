@@ -23,6 +23,18 @@ public class Bottoms {
         return price;
     }
 
+    public void setBottom_id(int bottom_id) {
+        this.bottom_id = bottom_id;
+    }
+
+    public void setFlavor(String flavor) {
+        this.flavor = flavor;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
     @Override
     public String toString() {
         return "Bottoms{" +

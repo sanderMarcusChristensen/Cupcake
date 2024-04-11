@@ -15,6 +15,46 @@ public class Orderline {
         this.bottoms_id = bottoms_id;
     }
 
+    public int getOrderline_id() {
+        return orderline_id;
+    }
+
+    public int getOrder_id() {
+        return order_id;
+    }
+
+    public int getTotal_price() {
+        return total_price;
+    }
+
+    public int getToppings_id() {
+        return toppings_id;
+    }
+
+    public int getBottoms_id() {
+        return bottoms_id;
+    }
+
+    public void setOrderline_id(int orderline_id) {
+        this.orderline_id = orderline_id;
+    }
+
+    public void setOrder_id(int order_id) {
+        this.order_id = order_id;
+    }
+
+    public void setTotal_price(int total_price) {
+        this.total_price = total_price;
+    }
+
+    public void setToppings_id(int toppings_id) {
+        this.toppings_id = toppings_id;
+    }
+
+    public void setBottoms_id(int bottoms_id) {
+        this.bottoms_id = bottoms_id;
+    }
+
     @Override
     public String toString() {
         return "Orderline{" +

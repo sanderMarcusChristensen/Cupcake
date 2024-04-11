@@ -59,5 +59,4 @@ public class BottomsMapper {
         }
         return cupCakeBottom;
     }
-
 }

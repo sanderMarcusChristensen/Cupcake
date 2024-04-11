@@ -15,24 +15,12 @@ public class Bottoms {
         return bottom_id;
     }
 
-    public void setBottom_id(int bottom_id) {
-        this.bottom_id = bottom_id;
-    }
-
     public String getFlavor() {
         return flavor;
     }
 
-    public void setFlavor(String flavor) {
-        this.flavor = flavor;
-    }
-
     public int getPrice() {
         return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
     }
 
     @Override

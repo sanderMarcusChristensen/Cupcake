@@ -15,25 +15,10 @@ public class Toppings {
         return topping_id;
     }
 
-    public void setTopping_id(int topping_id) {
-        this.topping_id = topping_id;
-    }
-
-    public String getFlavor() {
-        return flavor;
-    }
-
-    public void setFlavor(String flavor) {
-        this.flavor = flavor;
-    }
-
     public int getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
-        this.price = price;
-    }
 
     @Override
     public String toString() {

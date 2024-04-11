@@ -17,8 +17,8 @@
 
     <div class="top-section" th:if="${session.currentUser.user_role == 'admin'}">
         <div class="left-side-content">
-            <a class="orders-href" href="viewOrder.html" th:href="@{viewOrder}">Ordrer</a>
-            <a class="customers-href" href="userViewPage.html" th:href="@{userViewPage}">Kunder</a>
+            <a class="orders-href" href="viewOrders.html" th:href="@{viewOrders}">Ordrer</a>
+            <a class="customers-href" href="viewUsers.html" th:href="@{viewUsers}">Kunder</a>
         </div>
         <div class="right-side-content">
             <a href="../checkOutPage.html" th:href="@{viewbasket}">
@@ -101,7 +101,6 @@
     <a href="index.html" th:href="@{/logout}">Logout</a>
 
     <script>
-        // JavaScript to display price when bottom or topping is selected
         document.getElementById("bottom").addEventListener("change", function () {
             var price = this.options[this.selectedIndex].getAttribute("data-price");
             document.getElementById("bottomPrice").textContent = "Price: " + price;
@@ -114,4 +113,3 @@
     </script>
 </body>
 </html>
-

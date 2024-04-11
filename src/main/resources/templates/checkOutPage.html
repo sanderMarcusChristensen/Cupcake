@@ -25,15 +25,11 @@
     <form class="generic-form" method="post">
         <h1>Din kurv</h1>
 
-        <!-- Check if the cart is empty -->
         <div th:if="${session.cart == null}">
             <p>You have no items in the cart</p>
-            <!-- <a href="../orderpage.html" th:href="@{backToHomepage}">Return to Homepage</a> -->
         </div>
 
-        <!-- If the cart is not empty, display cart items -->
         <div th:if="${session.cart != null}">
-            <!-- Table to display cart items -->
             <table class="item-container">
                 <thead>
                 <tr>
@@ -45,7 +41,6 @@
                 </tr>
                 </thead>
                 <tbody>
-                <!-- Iterate over each cart line -->
                 <tr th:each="cartLine : ${session.cart.cartLines}">
                     <td>Cupcake</td>
                     <td th:text="${cartLine.amount}">2</td>

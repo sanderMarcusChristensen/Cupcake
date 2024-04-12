@@ -17,6 +17,7 @@
 
     <div class="top-section" th:if="${session.currentUser.user_role == 'admin'}">
         <div class="left-side-content">
+            <a class="btn" href="index.html" th:href="@{/logout}">Logout</a>
             <a class="orders-href" href="viewOrders.html" th:href="@{viewOrders}">Ordrer</a>
             <a class="customers-href" href="viewUsers.html" th:href="@{viewUsers}">Kunder</a>
         </div>
@@ -31,9 +32,10 @@
 
     <div class="top-section" th:if="${session.currentUser.user_role == 'user' || session.currentUser.user_role == 'null'}">
         <div class="left-side-content">
-            <p class="email" th:text="${currentUserName}">username</p>
+            <a class="btn" href="index.html" th:href="@{/logout}">Logout</a>
         </div>
         <div class="right-side-content">
+            <p class="email" th:text="${currentUserName}">username</p>
             <a href="../checkOutPage.html" th:href="@{viewbasket}">
                 <img class="" alt="basket" src="../public/images/basket.svg" th:src="@{/images/basket.svg}">
                 <div class="cart-count" th:if="${session.cart != null}" th:text="${session.cart.getCount()}">0</div>
@@ -98,7 +100,7 @@
         <div><p class="error" th:unless="${#strings.isEmpty(message)}" th:text="${message}"></p></div>
     </div>
 
-    <a href="index.html" th:href="@{/logout}">Logout</a>
+
 
     <script>
         document.getElementById("bottom").addEventListener("change", function () {

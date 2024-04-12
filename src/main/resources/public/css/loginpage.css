@@ -54,12 +54,12 @@ a, .btn[type="submit"] {
 }
 
 .signUp_LogOut a{
-    width: 49%;
+    width: 100%;
     text-decoration: none;
     text-align: center;
 }
 .signUp_LogOut button{
-    width: 35%;
+    width: 100%;
 }
 
 .logIn{

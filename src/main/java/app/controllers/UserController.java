@@ -29,7 +29,7 @@ public class UserController {
         String password1 = ctx.formParam("password1");
         String password2 = ctx.formParam("password2");
 
-        if (password1.equals(password2)) {
+        if (password1.equals(password2) && username.length() > 3 && password1.length() > 3 && password2.length() > 3) {
             try {
                 UserMapper.createuser(username, password1, connectionPool);
                 ctx.attribute("message", "Du er hermed oprettet med brugernavn: " + username +
@@ -40,7 +40,7 @@ public class UserController {
                 ctx.render("createuser.html");
             }
         } else {
-            ctx.attribute("message", "Dine to passwords matcher ikke! Prøv igen");
+            ctx.attribute("message", "Noget gik galt. Prøv igen. Vær sikker på følgende:\n- Username/password længde skal være mere end 3 bogstaver\n- Dine passwords skal matche i begge nedre felter");
             ctx.render("createuser.html");
         }
     }

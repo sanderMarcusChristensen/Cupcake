@@ -26,7 +26,7 @@
         </form>
         <div class="signUp_LogOut">
             <a class="signUp btn" href="createuser.html" th:href="@{createuser}" target="_parent">Create account</a>
-            <button class="btn logOut" type="submit" formaction="/logout">Log Out</button>
+            <button th:if="${session.currentUser != null}" class="btn logOut" type="submit" formaction="/logout">Log Out</button>
         </div>
     </div>
 </body>
